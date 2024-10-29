@@ -1,0 +1,59 @@
+---
+title: 제목
+createdAt: 2024-10-29
+updatedAt: null
+description: 세부 내용입니다
+thumbnail: ''
+---
+
+# 테스트용 마크다운
+
+> 잘 되는지 테스트를 해보고있습니다
+
+- 리스트
+  - 리스트 하위
+    - 하위
+
+```typescript
+function solution(s) {
+  let answer = 0;
+  const rotate = s.length;
+
+  for (let i = 0; i < s.length; i++) {
+    const stack = [];
+    let isMatched = true;
+
+    for (let j = 0; j < rotate; j++) {
+      const curr = s[(i + j) % rotate];
+
+      if (curr === '[' || curr === '{' || curr === '(') {
+        stack.push(curr);
+      } else {
+        if (stack.length === 0) {
+          isMatched = false;
+          break;
+        }
+
+        const top = stack[stack.length - 1];
+
+        if (curr === '[' && top === ']') {
+          stack.pop();
+        } else if (curr === '{' && top === '}') {
+          stack.pop();
+        } else if (curr === '[' && top === ']') {
+          stack.pop();
+        } else {
+          isMatched = false;
+          break;
+        }
+      }
+    }
+
+    if (stack.length === 0 && isMatched) {
+      answer += 1;
+    }
+  }
+
+  return answer;
+}
+```
