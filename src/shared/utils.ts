@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import dayjs from 'dayjs';
 import fs from 'fs';
 import { glob } from 'glob';
 import matter from 'gray-matter';
@@ -13,12 +14,12 @@ interface Utils {
   getPost: (
     category: string,
     id: string
-  ) => {
+  ) => Promise<{
     id: string;
     category: string;
     data: { [key: string]: any };
     content: string;
-  };
+  }>;
 }
 
 export const utils: Utils = {
@@ -80,16 +81,19 @@ export const utils: Utils = {
 
     return allPosts;
   },
-  getPost: (category, id) => {
+  getPost: async (category, id) => {
     const fullPath = path.join(utils.entitiesDirectory, category, `${id}.mdx`);
     const fileContents = fs.readFileSync(fullPath, 'utf8');
 
-    const { data, content } = matter(fileContents);
+    const { data, content } = await matter(fileContents);
 
     return {
       id,
       category,
-      data,
+      data: {
+        ...data,
+        createdAt: dayjs(data.createdAt).format('YYYY. MM. DD')
+      },
       content
     };
   }

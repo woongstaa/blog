@@ -1,23 +1,21 @@
 import type { Config } from 'tailwindcss';
-import typography from '@tailwindcss/typography';
 
 const config: Config = {
-  content: [
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}', //
-    './src/entities/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/features/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/shared/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/widgets/**/*.{js,ts,jsx,tsx,mdx}'
-  ],
+  content: ['./src/**/*.{ts,tsx}'],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
-        background: 'var(--background)',
-        foreground: 'var(--foreground)'
+        'netural-black': '#222223',
+        'warm-gray': '#D7D2CB',
+        'cool-gray': '#B1B3B3'
+      },
+      fontFamily:{
+        pretendard: ['Pretendard'],
       }
     }
   },
-  plugins: [typography]
+  plugins: [require('@tailwindcss/typography')]
 };
+
 export default config;
