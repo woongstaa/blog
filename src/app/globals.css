@@ -1,10 +1,8 @@
-@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-
 
 /* rehype-pretty-code css */
 pre {
@@ -32,12 +30,59 @@ code[data-theme*=' '] span {
 
 @layer base {
   body {
-    @apply font-pretendard bg-netural-black
+    @apply font-pretendard bg-netural-black;
   }
 }
 
 @layer components {
   p {
-   @apply text-warm-gray my-0
+    @apply text-warm-gray my-0;
+  }
+
+  .prose {
+    h1,
+    h2,
+    h3,
+    h4 {
+      @apply text-warm-gray;
+    }
+
+    p {
+      @apply text-warm-gray my-0;
+    }
+
+    strong {
+      @apply text-warm-gray font-semibold;
+    }
+
+    a {
+      @apply text-[#f3aa51] underline-offset-4;
+    }
+
+    ul,
+    ol,
+    li {
+      @apply text-warm-gray;
+
+      ::marker {
+        @apply text-warm-gray;
+      }
+    }
+
+    code {
+      @apply rounded bg-cool-gray px-2 py-1 text-[#4e4c4c] before:hidden after:hidden;
+    }
+
+    hr {
+      @apply border-warm-gray;
+    }
+
+    blockquote {
+      @apply border-warm-gray;
+
+      p {
+        @apply before:hidden after:hidden;
+      }
+    }
   }
 }

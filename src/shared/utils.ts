@@ -20,6 +20,7 @@ interface Utils {
     data: { [key: string]: any };
     content: string;
   }>;
+  getPortfolio: () => { content: string };
 }
 
 export const utils: Utils = {
@@ -96,5 +97,12 @@ export const utils: Utils = {
       },
       content
     };
+  },
+  getPortfolio: () => {
+    const file = fs.readFileSync(path.join(process.cwd(), 'src', 'app', 'portfolio', 'portfolio.md'), 'utf-8');
+
+    const { content } = matter(file);
+
+    return { content };
   }
 };
