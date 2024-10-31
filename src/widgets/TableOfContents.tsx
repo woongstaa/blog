@@ -1,3 +1,3 @@
-export async function TableOfContents({ content }) {
-  return null;
-}
+// export async function TableOfContents({ content }: { content: string }) {
+//   return null;
+// }

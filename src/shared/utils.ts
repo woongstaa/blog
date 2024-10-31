@@ -4,6 +4,7 @@ import fs from 'fs';
 import { glob } from 'glob';
 import matter from 'gray-matter';
 import path from 'path';
+import { FrontMatter } from './types';
 
 interface Utils {
   entitiesDirectory: string;
@@ -17,7 +18,7 @@ interface Utils {
   ) => Promise<{
     id: string;
     category: string;
-    data: { [key: string]: any };
+    data: FrontMatter;
     content: string;
   }>;
   getPortfolio: () => { content: string };
@@ -47,7 +48,7 @@ export const utils: Utils = {
       return {
         id,
         category,
-        ...data
+        ...(data as FrontMatter)
       };
     });
 
@@ -94,7 +95,7 @@ export const utils: Utils = {
       data: {
         ...data,
         createdAt: dayjs(data.createdAt).format('YYYY. MM. DD')
-      },
+      } as FrontMatter,
       content
     };
   },
