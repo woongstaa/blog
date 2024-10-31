@@ -1,16 +1,9 @@
-import { utils } from '@/shared/utils';
-import { MDXComponent } from '@/widgets/MDXComponent';
-import { PostSummary } from '@/widgets/PostSummary';
+import { PostDetail } from '@/_pages';
+import { utils } from '@/shared';
 
-
-export default async function PostDetailPage({ params }: { params: Promise<{ category: string; id: string }> }) {
+export default async function Page({ params }: { params: Promise<{ category: string; id: string }> }) {
   const { category, id } = await params;
-  const page = await utils.getPost(category, id);
+  const post = await utils.getPost(category, id);
 
-  return (
-    <div className='relative'>
-      <PostSummary category={page.category} data={page.data} />
-      <MDXComponent content={page?.content} />
-    </div>
-  );
+  return <PostDetail post={post} />;
 }

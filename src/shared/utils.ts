@@ -4,23 +4,16 @@ import fs from 'fs';
 import { glob } from 'glob';
 import matter from 'gray-matter';
 import path from 'path';
-import { FrontMatter } from './types';
+
+import { FrontMatter, Post, PostListItem } from './types';
 
 interface Utils {
   entitiesDirectory: string;
   getAllPostCategories: () => string[];
-  getPostsByCategory: (category: string) => { [key: string]: any };
+  getPostsByCategory: (category: string) => PostListItem[];
   getAllPostIds: () => { params: { category: string; id: string } }[];
-  getAllPosts: () => { [key: string]: any }[];
-  getPost: (
-    category: string,
-    id: string
-  ) => Promise<{
-    id: string;
-    category: string;
-    data: FrontMatter;
-    content: string;
-  }>;
+  getAllPosts: () => PostListItem[];
+  getPost: (category: string, id: string) => Promise<Post>;
   getPortfolio: () => { content: string };
 }
 
@@ -48,7 +41,7 @@ export const utils: Utils = {
       return {
         id,
         category,
-        ...(data as FrontMatter)
+        ...({ ...data, createdAt: dayjs(data.createdAt).format('YYYY. MM. DD') } as FrontMatter)
       };
     });
 
@@ -74,7 +67,7 @@ export const utils: Utils = {
   },
   getAllPosts: () => {
     const categories = utils.getAllPostCategories();
-    let allPosts: { [key: string]: any }[] = [];
+    let allPosts: PostListItem[] = [];
 
     categories.forEach((category) => {
       const posts = utils.getPostsByCategory(category);

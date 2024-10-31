@@ -1,12 +1,5 @@
-import { MDXComponent } from '@/widgets/MDXComponent';
-import { utils } from '@/shared/utils';
+import { Portfolio } from '@/_pages';
 
-export default async function Portfolio() {
-  const { content } = utils.getPortfolio();
-
-  return (
-    <div className='py-16'>
-      <MDXComponent content={content} />
-    </div>
-  );
+export default function Page() {
+  return <Portfolio />;
 }

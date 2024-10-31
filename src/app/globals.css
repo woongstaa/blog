@@ -35,24 +35,42 @@ code[data-theme*=' '] span {
 }
 
 @layer components {
-  p {
-    @apply text-warm-gray my-0;
+  h1,
+  h2,
+  h3,
+  h4,
+  p,
+  strong,
+  ul,
+  ol,
+  li {
+    @apply text-warm-gray;
   }
 
   .prose {
     h1,
     h2,
     h3,
-    h4 {
+    h4,
+    p,
+    strong,
+    ul,
+    ol,
+    li {
       @apply text-warm-gray;
     }
 
+    hr,
+    blockquote {
+      @apply border-warm-gray;
+    }
+
     p {
-      @apply text-warm-gray my-0;
+      @apply my-0;
     }
 
     strong {
-      @apply text-warm-gray font-semibold;
+      @apply font-semibold;
     }
 
     a {
@@ -62,8 +80,6 @@ code[data-theme*=' '] span {
     ul,
     ol,
     li {
-      @apply text-warm-gray;
-
       ::marker {
         @apply text-warm-gray;
       }
@@ -73,13 +89,7 @@ code[data-theme*=' '] span {
       @apply rounded bg-cool-gray px-2 py-1 text-[#4e4c4c] before:hidden after:hidden;
     }
 
-    hr {
-      @apply border-warm-gray;
-    }
-
     blockquote {
-      @apply border-warm-gray;
-
       p {
         @apply before:hidden after:hidden;
       }
