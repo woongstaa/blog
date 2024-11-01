@@ -1,8 +1,14 @@
 import { PostList } from '@/_pages';
 import { utils } from '@/shared';
+import { Metadata } from 'next';
 
-export default async function Page() {
-  const posts = await utils.getAllPosts();
+export const metadata: Metadata = {
+  title: 'posts, jay.log'
+};
 
-  return <PostList posts={posts} />;
+export default async function Page({ searchParams }: { searchParams: { filter?: string } }) {
+  const { filter } = await searchParams;
+  const posts = await utils.getAllPosts(filter);
+
+  return <PostList posts={posts} filter={filter} />;
 }

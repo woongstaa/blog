@@ -3,7 +3,7 @@ import rehypePrettyCode from 'rehype-pretty-code';
 import rehypeSlug from 'rehype-slug';
 import remarkBreaks from 'remark-breaks';
 import remarkGfm from 'remark-gfm';
-import { transformerCopyButton } from '@rehype-pretty/transformers';
+// import { transformerCopyButton } from '@rehype-pretty/transformers';
 import remarkToc from 'remark-toc';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 
@@ -20,13 +20,13 @@ export function MDXComponent({ content }: { content: string }) {
                 rehypePrettyCode,
                 {
                   keepBackground: false,
-                  theme: { dark: 'github-dark-dimmed', light: 'github-light' },
-                  transformers: [
-                    transformerCopyButton({
-                      visibility: 'always',
-                      feedbackDuration: 3_000
-                    })
-                  ]
+                  theme: { dark: 'github-dark-dimmed', light: 'github-light' }
+                  // transformers: [
+                  //   transformerCopyButton({
+                  //     visibility: 'always',
+                  //     feedbackDuration: 3_000
+                  //   })
+                  // ]
                 }
               ],
               rehypeSlug,

@@ -30,8 +30,7 @@ code[data-theme*=' '] span {
 
 @layer base {
   body {
-    font-family: 'Pretendard';
-    @apply bg-netural-black;
+    @apply font-pretendard tracking-tight bg-netural-black;
   }
 }
 
@@ -40,12 +39,15 @@ code[data-theme*=' '] span {
   h2,
   h3,
   h4,
+  strong {
+    @apply text-warm-gray;
+  }
+
   p,
-  strong,
   ul,
   ol,
   li {
-    @apply text-warm-gray;
+    @apply text-cool-gray;
   }
 
   .prose {
@@ -53,16 +55,18 @@ code[data-theme*=' '] span {
     h2,
     h3,
     h4,
-    p,
-    strong,
-    ul,
-    ol,
-    li {
+    strong {
       @apply text-warm-gray;
     }
 
-    hr,
-    blockquote {
+    p,
+    ul,
+    ol,
+    li {
+      @apply text-cool-gray;
+    }
+
+    hr {
       @apply border-warm-gray;
     }
 
@@ -91,12 +95,14 @@ code[data-theme*=' '] span {
     }
 
     code {
-      @apply rounded bg-cool-gray px-2 py-1 text-[#4e4c4c] before:hidden after:hidden;
+      @apply rounded bg-cool-gray px-2 py-1 text-cool-gray-reverse before:hidden after:hidden;
     }
 
     blockquote {
+      @apply border-warm-gray py-2;
+
       p {
-        @apply before:hidden after:hidden;
+        @apply text-warm-gray before:hidden after:hidden;
       }
     }
   }

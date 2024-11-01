@@ -9,10 +9,10 @@ import { FrontMatter, Post, PostListItem } from './types';
 
 interface Utils {
   entitiesDirectory: string;
-  getAllPostCategories: () => string[];
+  getAllPostCategories: () => { name: string; fileCount: number }[];
   getPostsByCategory: (category: string) => PostListItem[];
   getAllPostIds: () => { params: { category: string; id: string } }[];
-  getAllPosts: () => PostListItem[];
+  getAllPosts: (paramCategory: string | undefined) => PostListItem[];
   getPost: (category: string, id: string) => Promise<Post>;
   getPortfolio: () => { content: string };
 }
@@ -22,11 +22,21 @@ export const utils: Utils = {
   getAllPostCategories: () => {
     const categories = fs.readdirSync(utils.entitiesDirectory);
 
-    // 디렉토리만 필터링
-    return categories.filter((category) => {
-      const categoryPath = path.join(utils.entitiesDirectory, category);
-      return fs.statSync(categoryPath).isDirectory();
-    });
+    // 디렉토리만 필터링하고 파일 개수 추가
+    return categories
+      .filter((category) => {
+        const categoryPath = path.join(utils.entitiesDirectory, category);
+        return fs.statSync(categoryPath).isDirectory();
+      })
+      .map((category) => {
+        const categoryPath = path.join(utils.entitiesDirectory, category);
+        const fileCount = fs.readdirSync(categoryPath).length; // 폴더 내 파일 개수 확인
+
+        return {
+          name: category,
+          fileCount: fileCount
+        };
+      });
   },
   getPostsByCategory: (category) => {
     const categoryPath = path.join(utils.entitiesDirectory, category);
@@ -65,13 +75,16 @@ export const utils: Utils = {
       };
     });
   },
-  getAllPosts: () => {
+  getAllPosts: (paramCategory) => {
     const categories = utils.getAllPostCategories();
     let allPosts: PostListItem[] = [];
 
     categories.forEach((category) => {
-      const posts = utils.getPostsByCategory(category);
-      allPosts = allPosts.concat(posts);
+      // 특정 카테고리가 없는 경우 모든 카테고리의 포스트 가져오기
+      if (paramCategory === undefined || category.name === paramCategory) {
+        const posts = utils.getPostsByCategory(category.name);
+        allPosts = allPosts.concat(posts);
+      }
     });
 
     return allPosts;

@@ -8,10 +8,11 @@ const config: Config = {
       colors: {
         'netural-black': '#222223',
         'warm-gray': '#D7D2CB',
-        'cool-gray': '#B1B3B3'
+        'cool-gray': '#B1B3B3',
+        'cool-gray-reverse': '#4e4c4c'
       },
-      fontFamily:{
-        pretendard: ['Pretendard'],
+      fontFamily: {
+        pretendard: ['Pretendard']
       }
     }
   },
