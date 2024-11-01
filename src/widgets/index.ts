@@ -3,3 +3,4 @@ export { MDXComponent } from './MDXComponent';
 export { PostSummary } from './PostSummary';
 export {} from './TableOfContents';
 export { ScrollProgressBar } from './ScrollProgressBar';
+export { Footer } from './Footer';

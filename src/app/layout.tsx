@@ -1,6 +1,6 @@
-import { Header } from '@/widgets/Header';
 import './globals.css';
 import { Metadata } from 'next';
+import { Header, Footer } from '@/widgets';
 
 export const metadata: Metadata = {
   title: 'jay.log'
@@ -16,6 +16,7 @@ export default function RootLayout({
       <body>
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );

@@ -3,7 +3,7 @@ import { NavigateToHref } from '@/features';
 
 export function Home() {
   return (
-    <PageLayout>
+    <PageLayout className='my-auto'>
       <div className='flex justify-center rounded-lg border border-warm-gray py-8'>
         <div className='flex aspect-square w-48 items-center justify-center overflow-hidden rounded-full bg-warm-gray'>
           <img src='/profile.webp' alt='' className='ml-5 w-10/12 object-cover' />
