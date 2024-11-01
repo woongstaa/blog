@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { PostListItem, PageLayout } from '@/shared';
 import { PostsCategoryNav } from '@/features';
 
-export function PostList({ posts, filter }: { posts: PostListItem[]; filter?: string }) {
+export function PostList({ posts }: { posts: PostListItem[] }) {
   return (
     <PageLayout>
       <PostsCategoryNav />

@@ -6,9 +6,9 @@ export const metadata: Metadata = {
   title: 'posts, jay.log'
 };
 
-export default async function Page({ searchParams }: { searchParams: { filter?: string } }) {
+export default async function Page({ searchParams }: { searchParams: Promise<{ filter?: string }> }) {
   const { filter } = await searchParams;
   const posts = await utils.getAllPosts(filter);
 
-  return <PostList posts={posts} filter={filter} />;
+  return <PostList posts={posts} />;
 }

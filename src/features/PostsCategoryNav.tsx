@@ -13,14 +13,14 @@ export function PostsCategoryNav() {
       {includeAllCategory.map((category, index) => {
         if (category.name === '전체') {
           return (
-            <NavigateToHref href='/posts'>
-              <SingleCategory index={index} category={category} />
+            <NavigateToHref key={`category_${index}`} href='/posts'>
+              <SingleCategory category={category} />
             </NavigateToHref>
           );
         } else {
           return (
-            <NavigateToHref href={`/posts?filter=${category.name}`}>
-              <SingleCategory index={index} category={category} />
+            <NavigateToHref key={`category_${index}`} href={`/posts?filter=${category.name}`}>
+              <SingleCategory category={category} />
             </NavigateToHref>
           );
         }
@@ -29,6 +29,6 @@ export function PostsCategoryNav() {
   );
 }
 
-function SingleCategory({ index, category }: { index: number; category: { name: string; fileCount: number } }) {
-  return <li className='m-1 rounded bg-cool-gray-reverse p-2 text-warm-gray' key={`category_${index}`}>{`${category.name} (${category.fileCount})`}</li>;
+function SingleCategory({ category }: { category: { name: string; fileCount: number } }) {
+  return <li className='m-1 rounded bg-cool-gray-reverse p-2 text-warm-gray'>{`${category.name} (${category.fileCount})`}</li>;
 }
