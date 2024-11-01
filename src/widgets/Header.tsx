@@ -1,19 +1,19 @@
-import { NavigateTo } from '@/features';
+import { NavigateToHref } from '@/features';
 
 export function Header() {
   return (
     <header className='mx-auto flex max-w-prose justify-between py-4'>
-      <NavigateTo href='/'>
+      <NavigateToHref href='/'>
         <p className='font-semibold'>Dev.woong 블로그</p>
-      </NavigateTo>
+      </NavigateToHref>
       <div className='flex'>
-        <NavigateTo href='/posts'>
+        <NavigateToHref href='/posts'>
           <p className='font-semibold'>블로그</p>
-        </NavigateTo>
+        </NavigateToHref>
         <div className='w-4' />
-        <NavigateTo href='/portfolio'>
+        <NavigateToHref href='/portfolio'>
           <p className='font-semibold'>포트폴리오</p>
-        </NavigateTo>
+        </NavigateToHref>
       </div>
     </header>
   );

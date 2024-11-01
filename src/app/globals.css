@@ -30,7 +30,8 @@ code[data-theme*=' '] span {
 
 @layer base {
   body {
-    @apply font-pretendard bg-netural-black;
+    font-family: 'Pretendard';
+    @apply bg-netural-black;
   }
 }
 
@@ -74,7 +75,11 @@ code[data-theme*=' '] span {
     }
 
     a {
-      @apply text-[#f3aa51] underline-offset-4;
+      @apply text-[#f3aa51] underline-offset-4 decoration-2;
+
+      strong {
+        @apply hover:text-[#f3aa51];
+      }
     }
 
     ul,

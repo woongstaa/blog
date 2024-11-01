@@ -1,1 +1,1 @@
-export { NavigateTo } from './NavigateTo';
+export { NavigateToHref } from './NavigateToHref';
