@@ -5,7 +5,7 @@ export function PostDetail({ post }: { post: Post }) {
   return (
     <PageLayout>
       <ScrollProgressBar />
-      <PostSummary category={post.category} data={post.data} />
+      <PostSummary category={post.category} data={post.data} readingTime={post.readingTime} />
       <MDXComponent content={post.content} />
     </PageLayout>
   );

@@ -1,4 +1,4 @@
-import { MDXComponent } from '@/widgets';
+import { MDXComponent, ScrollProgressBar } from '@/widgets';
 import { utils, PageLayout } from '@/shared';
 
 export function Portfolio() {
@@ -6,6 +6,7 @@ export function Portfolio() {
 
   return (
     <PageLayout>
+      <ScrollProgressBar />
       <MDXComponent content={content} />
     </PageLayout>
   );

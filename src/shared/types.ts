@@ -10,9 +10,11 @@ export interface Post {
   category: string;
   data: FrontMatter;
   content: string;
+  readingTime: string;
 }
 
 export interface PostListItem extends FrontMatter {
   id: string;
   category: string;
+  readingTime: string;
 }

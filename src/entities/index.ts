@@ -1,0 +1,1 @@
+export { PostItemCard } from './PostItemCard';

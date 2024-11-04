@@ -6,6 +6,7 @@ import matter from 'gray-matter';
 import path from 'path';
 
 import { FrontMatter, Post, PostListItem } from './types';
+import readingTime from 'reading-time';
 
 interface Utils {
   entitiesDirectory: string;
@@ -15,10 +16,11 @@ interface Utils {
   getAllPosts: (paramCategory: string | undefined) => PostListItem[];
   getPost: (category: string, id: string) => Promise<Post>;
   getPortfolio: () => { content: string };
+  calculateReadingTimeCeil: (content: string) => string;
 }
 
 export const utils: Utils = {
-  entitiesDirectory: path.join(process.cwd(), 'src', 'entities'),
+  entitiesDirectory: path.join(process.cwd(), 'src', 'shared', 'markdown'),
   getAllPostCategories: () => {
     const categories = fs.readdirSync(utils.entitiesDirectory);
 
@@ -46,11 +48,12 @@ export const utils: Utils = {
       const id = fileName.replace(/\.mdx?$/, '');
       const fullPath = path.join(categoryPath, fileName);
       const fileContents = fs.readFileSync(fullPath, 'utf8');
-      const { data } = matter(fileContents);
+      const { data, content } = matter(fileContents);
 
       return {
         id,
         category,
+        readingTime: utils.calculateReadingTimeCeil(content),
         ...({ ...data, createdAt: dayjs(data.createdAt).format('YYYY. MM. DD') } as FrontMatter)
       };
     });
@@ -64,7 +67,7 @@ export const utils: Utils = {
     return files.map((file) => {
       const parsed = path.parse(file);
       const categories = parsed.dir.split(path.sep);
-      const entitiesIndex = categories.indexOf('entities');
+      const entitiesIndex = categories.indexOf('markdown');
       const category = categories[entitiesIndex + 1];
 
       return {
@@ -102,7 +105,8 @@ export const utils: Utils = {
         ...data,
         createdAt: dayjs(data.createdAt).format('YYYY. MM. DD')
       } as FrontMatter,
-      content
+      content,
+      readingTime: utils.calculateReadingTimeCeil(content)
     };
   },
   getPortfolio: () => {
@@ -111,5 +115,10 @@ export const utils: Utils = {
     const { content } = matter(file);
 
     return { content };
+  },
+  calculateReadingTimeCeil: (content) => {
+    const { minutes } = readingTime(content);
+
+    return `${Math.ceil(minutes)}분`;
   }
 };

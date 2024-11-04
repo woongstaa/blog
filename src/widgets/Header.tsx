@@ -2,7 +2,7 @@ import { NavigateToHref } from '@/features';
 
 export function Header() {
   return (
-    <header className='mx-auto flex max-w-prose justify-between py-4'>
+    <header className='mx-auto flex max-w-prose justify-between h-[6vh] items-center'>
       <NavigateToHref href='/'>
         <h4 className='font-semibold text-lg'>jay.log</h4>
       </NavigateToHref>

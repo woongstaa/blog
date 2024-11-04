@@ -42,44 +42,16 @@ export function MDXComponent({ content }: { content: string }) {
           }
         }}
         components={{
-          // h1: ({ children }) => {
-          //   return <h1 className='text-warm-gray'>{children}</h1>;
-          // },
-          // h2: ({ children }) => {
-          //   return <h2 className='text-warm-gray'>{children}</h2>;
-          // },
-          // h3: ({ children }) => {
-          //   return <h3 className='text-warm-gray'>{children}</h3>;
-          // },
-          // h4: ({ children }) => {
-          //   return <h4 className='text-warm-gray'>{children}</h4>;
-          // },
-          // blockquote: ({ children, ...rest }) => <div className='bg-cool-gray rounded-lg py-2 px-6'>{children}</div>,
-          // p: ({ children, ...rest }) => {
-          //   return <p>{children}</p>;
-          // },
-          // strong: ({ children }) => {
-          //   return <strong className='text-warm-gray'>{children}</strong>;
-          // },
-          // ul: ({ children }) => {
-          //   return <ul className='text-warm-gray'>{children}</ul>;
-          // },
-          // ol: ({ children }) => {
-          //   return <ol className='text-warm-gray'>{children}</ol>;
-          // },
-          // li: ({ children }) => {
-          //   return <li className='m-0 text-warm-gray marker:text-warm-gray'>{children}</li>;
-          // },
           a: ({ children, href, ...rest }) => {
             return (
               <a {...rest} target='_blank' href={href?.toString()}>
                 {children}
               </a>
             );
+          },
+          img: (imageComponent) => {
+            return <img {...imageComponent} className='rounded-lg aspect-video object-contain bg-warm-gray' />;
           }
-          // code: ({ children }) => {
-          //   return <code className='rounded bg-cool-gray px-2 py-1 text-[#4e4c4c] before:hidden after:hidden'>{children}</code>;
-          // }
         }}
       />
     </article>

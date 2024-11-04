@@ -21,6 +21,7 @@
     "next-mdx-remote": "^5.0.0",
     "react": "19.0.0-rc-69d4b800-20241021",
     "react-dom": "19.0.0-rc-69d4b800-20241021",
+    "reading-time": "^1.5.0",
     "rehype-autolink-headings": "^7.1.0",
     "rehype-pretty-code": "0.14.0",
     "rehype-slug": "^6.0.0",
