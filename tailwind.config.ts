@@ -14,6 +14,9 @@ const config: Config = {
       fontFamily: {
         pretendard: ['Pretendard']
       }
+      // maxHeight: {
+      //   tocHeight: 'calc(100vh - 6vh)'
+      // }
     }
   },
   plugins: [require('@tailwindcss/typography')]

@@ -8,11 +8,11 @@ export function Header() {
       </NavigateToHref>
       <div className='flex'>
         <NavigateToHref href='/posts'>
-          <h4 className='font-semibold text-lg'>posts</h4>
+          <h4 className='font-semibold text-lg'>posts.</h4>
         </NavigateToHref>
         <div className='w-4' />
         <NavigateToHref href='/portfolio'>
-          <h4 className='font-semibold text-lg'>portfolio</h4>
+          <h4 className='font-semibold text-lg'>portfolio.</h4>
         </NavigateToHref>
       </div>
     </header>

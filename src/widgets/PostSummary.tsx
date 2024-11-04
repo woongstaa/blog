@@ -1,8 +1,8 @@
-import { FrontMatter, Post } from '@/shared/types';
+import { Post } from '@/shared/types';
 
 export function PostSummary({ category, data, readingTime }: Partial<Post>) {
   return (
-    <div className='mx-auto my-8 flex max-w-prose flex-col items-center justify-center'>
+    <div className='mx-auto mb-4 flex max-w-prose flex-col items-center justify-center'>
       {data?.thumbnail && (
         <>
           <img src={data.thumbnail} className='aspect-video object-contain bg-warm-gray rounded-lg' />

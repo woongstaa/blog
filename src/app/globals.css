@@ -54,6 +54,13 @@ code[data-theme*=' '] span {
     h1,
     h2,
     h3,
+    h4 {
+      @apply pt-4;
+    }
+
+    h1,
+    h2,
+    h3,
     h4,
     strong {
       @apply text-warm-gray;
@@ -71,7 +78,7 @@ code[data-theme*=' '] span {
     }
 
     p {
-      @apply my-0;
+      @apply my-2;
     }
 
     strong {
@@ -80,10 +87,10 @@ code[data-theme*=' '] span {
 
     a {
       @apply text-[#f3aa51] underline-offset-4 decoration-2;
+    }
 
-      strong {
-        @apply hover:text-[#f3aa51];
-      }
+    a strong {
+      @apply hover:text-[#f3aa51];
     }
 
     ul,
@@ -95,7 +102,7 @@ code[data-theme*=' '] span {
     }
 
     code {
-      @apply rounded bg-cool-gray px-2 py-1 text-cool-gray-reverse before:hidden after:hidden;
+      @apply rounded bg-cool-gray px-2 py-1 mx-[2px] text-cool-gray-reverse before:hidden after:hidden;
     }
 
     blockquote {

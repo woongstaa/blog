@@ -8,7 +8,12 @@ export function PostList({ posts }: { posts: PostListItem[] }) {
       <PostsCategoryNav />
       <br />
       {posts.map((post, index) => {
-        return <PostItemCard key={`post_${index}`} post={post} />;
+        return (
+          <div key={`post_${index}`}>
+            <PostItemCard post={post} />
+            {posts.length - 1 !== index && <div className='h-4' />}
+          </div>
+        );
       })}
     </PageLayout>
   );

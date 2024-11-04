@@ -90,7 +90,7 @@ export const utils: Utils = {
       }
     });
 
-    return allPosts;
+    return allPosts.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
   },
   getPost: async (category, id) => {
     const fullPath = path.join(utils.entitiesDirectory, category, `${id}.mdx`);
