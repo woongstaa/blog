@@ -1,6 +1,6 @@
 ## 개인 개발 블로그 jay.log
 
-### url.
+### url
 
 [임시링크](https://blog-jinungs-projects.vercel.app/)
 
@@ -38,7 +38,9 @@
 │       │       └── page.tsx
 │       └── page.tsx
 ├── entities
-│   ├── PostItemCard.tsx
+│   ├── Categories.ts
+│   ├── Post.ts
+│   ├── Posts.ts
 │   └── index.ts
 ├── features
 │   ├── NavigateToHref.tsx
@@ -57,6 +59,7 @@
     ├── Footer.tsx
     ├── Header.tsx
     ├── MDXComponent.tsx
+    ├── PostItemCard.tsx
     ├── PostSummary.tsx
     ├── Profile.tsx
     ├── ScrollProgressBar.tsx
