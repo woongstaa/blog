@@ -7,11 +7,11 @@ import remarkGfm from 'remark-gfm';
 import remarkToc from 'remark-toc';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 
-export function MDXComponent({ content }: { content: string }) {
+export function MDXComponent({ content }: { content?: string }) {
   return (
     <article className='prose mx-auto w-full'>
       <MDXRemote
-        source={content}
+        source={content || ''}
         options={{
           mdxOptions: {
             remarkPlugins: [remarkGfm, remarkBreaks, [remarkToc, { heading: 'structure' }]],

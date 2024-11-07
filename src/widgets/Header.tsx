@@ -2,17 +2,17 @@ import { NavigateToHref } from '@/features';
 
 export function Header() {
   return (
-    <header className='mx-auto flex max-w-prose justify-between h-[6vh] items-center'>
+    <header className='mx-auto  flex h-[6vh] max-w-[360px] items-center justify-between sm:max-w-prose'>
       <NavigateToHref href='/'>
-        <h4 className='font-semibold text-lg'>jay.log</h4>
+        <h4 className='text-lg font-semibold'>jay.log</h4>
       </NavigateToHref>
       <div className='flex'>
         <NavigateToHref href='/posts'>
-          <h4 className='font-semibold text-lg'>posts.</h4>
+          <h4 className='text-lg font-semibold'>posts.</h4>
         </NavigateToHref>
         <div className='w-4' />
         <NavigateToHref href='/portfolio'>
-          <h4 className='font-semibold text-lg'>portfolio.</h4>
+          <h4 className='text-lg font-semibold'>portfolio.</h4>
         </NavigateToHref>
       </div>
     </header>

@@ -43,9 +43,9 @@ export function TableOfContents() {
   };
 
   return (
-    <aside className='absolute top-0 left-full h-full w-52'>
-      <div className='sticky top-[10vh] ml-8 w-52 bg-cool-gray-reverse rounded-lg p-4'>
-        <p className='text-warm-gray font-semibold'>contents.</p>
+    <aside className='absolute hidden left-full top-0 h-full w-52 sm:block'>
+      <div className='sticky top-[10vh] ml-8 w-52 rounded-lg bg-cool-gray-reverse p-4'>
+        <p className='font-semibold text-warm-gray'>contents.</p>
         <div className='h-2' />
         <ul className='text-sm'>
           {toc.map((content, index) => {

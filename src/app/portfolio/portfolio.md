@@ -1,3 +1,12 @@
+## Contacts
+
+✉️ **Email.** jinung91@gmail.com
+📱 **Phone.** 010-2587-1319
+✏️ **Blog.** https://velog.io/@woongstaa
+⌨️ **Github.** https://github.com/woongstaa
+
+---
+
 ## Introduce
 
 - 안녕하세요 프론트엔드 개발자 이진웅입니다!

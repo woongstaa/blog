@@ -1,10 +1,12 @@
-import { utils } from '@/shared';
-import { Metadata } from 'next';
 import React from 'react';
+import { Metadata } from 'next';
+
+import { PostImpl } from '@/entities';
 
 export async function generateMetadata({ params }: { params: Promise<{ category: string; id: string }> }): Promise<Metadata> {
   const { category, id } = await params;
-  const { data } = await utils.getPost(category, id);
+
+  const { data } = PostImpl.create(category, id);
 
   return {
     title: `${data.title}, jay.log`,
