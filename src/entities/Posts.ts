@@ -6,29 +6,33 @@ import matter from 'gray-matter';
 import { CategoriesImpl } from './Categories';
 import { FrontMatter, utils } from '@/shared';
 
-export interface Posts extends FrontMatter {
+export interface PostFromPosts extends FrontMatter {
   id: string;
   category: string;
   readingTime: string;
 }
 
-export class PostsImpl {
+export interface Posts {
+  create: () => PostFromPosts[];
+}
+
+export class PostsImpl implements Posts {
   private readonly categoriesImpl: CategoriesImpl;
 
   constructor() {
     this.categoriesImpl = new CategoriesImpl();
   }
 
-  public static create(paramCategory?: string) {
+  public create(paramCategory?: string) {
     const posts = new PostsImpl();
     const filteredPosts = posts.getFilteredPosts(paramCategory);
     return filteredPosts;
   }
 
-  private getFilteredPosts(paramCategory?: string): Posts[] {
+  private getFilteredPosts(paramCategory?: string): PostFromPosts[] {
     const categories = this.categoriesImpl.getCategoriesWithFileCountOver0();
 
-    let allPosts: Posts[] = [];
+    let allPosts: PostFromPosts[] = [];
 
     categories.forEach((category) => {
       if (!paramCategory || category.name === paramCategory) {
@@ -40,7 +44,7 @@ export class PostsImpl {
     return allPosts;
   }
 
-  private getPostsByCategory(categoryName: string): Posts[] {
+  private getPostsByCategory(categoryName: string): PostFromPosts[] {
     const categoryPath = path.join(utils.mdDirectory, categoryName);
     const files = fs.readdirSync(categoryPath);
 

@@ -1,7 +1,7 @@
-import { Posts } from '@/entities/Posts';
+import { PostFromPosts } from '@/entities/Posts';
 import { NavigateToHref } from '@/features';
 
-export function PostItemCard({ post }: { post: Posts }) {
+export function PostItemCard({ post }: { post: PostFromPosts }) {
   return (
     <NavigateToHref href={`/posts/${post.category}/${post.id}`}>
       <div className='rounded-lg border border-warm-gray p-4'>

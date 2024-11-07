@@ -1,9 +1,9 @@
 import { PageLayout } from '@/shared';
 import { PostsCategoryNav } from '@/features';
 import { PostItemCard } from '@/widgets';
-import { Posts } from '@/entities/Posts';
+import { PostFromPosts } from '@/entities/Posts';
 
-export function PostList({ posts }: { posts: Posts[] }) {
+export function PostList({ posts }: { posts: PostFromPosts[] }) {
   return (
     <PageLayout>
       <PostsCategoryNav />
