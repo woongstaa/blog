@@ -1,13 +1,13 @@
-import { PostListItem } from '@/shared';
+import { Posts } from '@/entities/Posts';
 import { NavigateToHref } from '@/features';
 
-export function PostItemCard({ post }: { post: PostListItem }) {
+export function PostItemCard({ post }: { post: Posts }) {
   return (
     <NavigateToHref href={`/posts/${post.category}/${post.id}`}>
       <div className='rounded-lg border border-warm-gray p-4'>
         <h2 className='truncate text-xl font-semibold'>{post.title}</h2>
         <div className='h-2' />
-        <p className='min-h-16 truncate break-words text-pretty'>{post.description}</p>
+        <p className='min-h-16 truncate text-pretty break-words'>{post.description}</p>
         <div className='h-2' />
         <div className='flex justify-end text-cool-gray'>
           <img src={'/clock.svg'} alt='' className='aspect-square w-4 object-contain' />
