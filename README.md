@@ -2,7 +2,7 @@
 
 ### url
 
-[임시링크](https://blog-jinungs-projects.vercel.app/)
+[배포링크](https://jaylog.dev)
 
 ### tech stack
 
@@ -31,12 +31,13 @@
 │   ├── portfolio
 │   │   ├── page.tsx
 │   │   └── portfolio.md
-│   └── posts
-│       ├── [category]
-│       │   └── [id]
-│       │       ├── layout.tsx
-│       │       └── page.tsx
-│       └── page.tsx
+│   ├── posts
+│   │   ├── [category]
+│   │   │   └── [id]
+│   │   │       ├── layout.tsx
+│   │   │       └── page.tsx
+│   │   └── page.tsx
+│   └── sitemap.ts
 ├── entities
 │   ├── Categories.ts
 │   ├── Post.ts
@@ -46,7 +47,6 @@
 │   ├── NavigateToHref.tsx
 │   ├── PostsCategoryNav.tsx
 │   └── index.ts
-├── mdx-components.tsx
 ├── shared
 │   ├── PageLayout.tsx
 │   ├── index.ts
