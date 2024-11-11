@@ -17,7 +17,7 @@ interface Utils {
 
 export const utils: Utils = {
   getFullPath: (paths) => {
-    if (!path) {
+    if (path === undefined) {
       return process.cwd();
     } else {
       return [process.cwd(), ...(paths as string[])].join('/');
