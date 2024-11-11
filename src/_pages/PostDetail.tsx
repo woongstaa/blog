@@ -1,6 +1,6 @@
 import { PostImpl } from '@/entities/Post';
-import { PageLayout } from '@/shared';
-import { MDXComponent, PostSummary, Profile, ScrollProgressBar, TableOfContents } from '@/widgets';
+import { PageLayout, MDXComponent } from '@/shared';
+import { PostSummary, Profile, ScrollProgressBar, TableOfContents } from '@/widgets';
 
 export function PostDetail({ post }: { post: PostImpl }) {
   return (
