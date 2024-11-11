@@ -1,5 +1,7 @@
 {
   "functions": {
-    "includeFiles": "src/shared/markdown/**/*"
+    "src/shared/utils.ts": {
+      "includeFiles": "src/shared/markdown/**/*"
+    }
   }
 }
