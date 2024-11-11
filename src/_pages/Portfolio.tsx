@@ -1,8 +1,8 @@
 import { ScrollProgressBar } from '@/widgets';
 import { utils, PageLayout, MDXComponent } from '@/shared';
 
-export function Portfolio() {
-  const { content } = utils.getPortfolio();
+export async function Portfolio() {
+  const { content } = await utils.getPortfolio();
 
   return (
     <PageLayout>
