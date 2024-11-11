@@ -17,8 +17,8 @@ interface Utils {
 
 export const utils: Utils = {
   getFullPath: (paths) => {
-    console.log('GET_FULL_PATH :::', path.join(process.cwd(), paths));
-    return path.join(process.cwd(), paths);
+    console.log('GET_FULL_PATH :::', path.resolve(process.cwd(), paths));
+    return path.resolve(process.cwd(), paths);
   },
   getFile: (path) => {
     return fs.readFileSync(path, 'utf-8');
