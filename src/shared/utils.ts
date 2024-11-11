@@ -35,9 +35,14 @@ export const utils: Utils = {
     return fs.statSync(path).isDirectory();
   },
   getDirectory: (path) => {
-    console.log('GET_DIR :::', path, fs.readdirSync(path));
-    return fs.readdirSync(path);
+    if (!fs.existsSync(path)) {
+      console.error('경로가 존재하지 않음 :::', path);
+      throw new Error(`Directory not found: ${path}`);
+    }
+    console.log('GET_DIR :::', path);
+    return fs.readdirSync(path, 'utf-8');
   },
+
   getPortfolio: () => {
     const filePath = utils.getFullPath(['src', 'shared', 'portfolio', 'portfolio.md']);
     const { content } = utils.getMatter(utils.getFile(filePath));
