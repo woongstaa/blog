@@ -30,7 +30,8 @@ export class PostImpl implements Post {
   }
 
   private initialize(category: string, id: string) {
-    const { data, content } = this.getPost(category, id);
+    const { data, content } = this.getPost();
+    // const { data, content } = this.getPost(category, id);
     this.data = data;
     this.content = content;
     this.readingTime = utils.calculateReadingTimeCeil(content);
@@ -38,11 +39,13 @@ export class PostImpl implements Post {
     this.category = category;
   }
 
-  private getPost(category: string, id: string) {
-    const fullPath = utils.getFullPath(`src/shared/markdown/${category}/${id}.mdx`);
-    const fileContents = utils.getFile(fullPath);
+  // private getPost(category: string, id: string) {
+  private getPost() {
+    // const fullPath = utils.getFullPath(`src/shared/markdown/${category}/${id}.mdx`);
+    // const fileContents = utils.getFile(fullPath);
 
-    const { data, content } = utils.getMatter(fileContents);
+    const { data, content } = utils.getMatter('');
+    // const { data, content } = utils.getMatter(fileContents);
 
     return {
       data: {
