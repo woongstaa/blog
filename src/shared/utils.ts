@@ -35,8 +35,8 @@ export const utils: Utils = {
     return fs.statSync(path).isDirectory();
   },
   getDirectory: (path) => {
-    console.log('GET_DIR :::', path, fs.readdirSync(path, 'utf-8'));
-    return fs.readdirSync(path, 'utf-8');
+    console.log('GET_DIR :::', path, fs.readdirSync(path));
+    return fs.readdirSync(path);
   },
   getPortfolio: () => {
     const filePath = utils.getFullPath(['src', 'shared', 'portfolio', 'portfolio.md']);
