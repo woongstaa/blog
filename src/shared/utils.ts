@@ -5,7 +5,7 @@ import path from 'path';
 import readingTime from 'reading-time';
 
 interface Utils {
-  getFullPath: (paths: string[]) => string;
+  getFullPath: (paths?: string[]) => string;
   getFile: (path: string) => string;
   getMatter: (fileContent: string) => { data: { [key: string]: string }; content: string };
   dateFormatter: (date: Date | string, format: string) => string;
@@ -17,7 +17,11 @@ interface Utils {
 
 export const utils: Utils = {
   getFullPath: (paths) => {
-    return [process.cwd(), ...(paths as string[])].join('/');
+    if (paths === undefined) {
+      return process.cwd();
+    } else {
+      return path.join(process.cwd(), ...paths);
+    }
   },
   getFile: (path) => {
     return fs.readFileSync(path, 'utf-8');
@@ -38,7 +42,7 @@ export const utils: Utils = {
   },
   getPortfolio: () => {
     const filePath = utils.getFullPath(['src', 'app', 'portfolio', 'portfolio.md']);
-    const { content } = utils.getMatter(filePath);
+    const { content } = utils.getMatter(utils.getFile(filePath));
 
     return { content };
   },
