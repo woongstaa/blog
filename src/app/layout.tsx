@@ -3,7 +3,10 @@ import { Metadata } from 'next';
 import { Header, Footer } from '@/widgets';
 
 export const metadata: Metadata = {
-  title: 'jay.log'
+  title: 'jay.log',
+  verification: {
+    google: 'Fovph-FksBSnhVVH01lO442APXMSp6jENyMGEPmPbYw'
+  }
 };
 
 export default function RootLayout({

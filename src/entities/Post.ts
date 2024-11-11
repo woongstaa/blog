@@ -39,7 +39,7 @@ export class PostImpl implements Post {
   }
 
   private getPost(category: string, id: string) {
-    const fullPath = utils.getFullPath([category, `${id}.mdx`]);
+    const fullPath = utils.getFullPath(['src', 'shared', 'markdown', category, `${id}.mdx`]);
     const fileContents = utils.getFile(fullPath);
 
     const { data, content } = utils.getMatter(fileContents);
