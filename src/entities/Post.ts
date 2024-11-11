@@ -1,9 +1,3 @@
-import fs from 'fs';
-import path from 'path';
-
-import dayjs from 'dayjs';
-import matter from 'gray-matter';
-
 import { FrontMatter, utils } from '@/shared';
 
 export interface Post {
@@ -45,15 +39,15 @@ export class PostImpl implements Post {
   }
 
   private getPost(category: string, id: string) {
-    const fullPath = path.join(utils.mdDirectory, category, `${id}.mdx`);
-    const fileContents = fs.readFileSync(fullPath, 'utf8');
+    const fullPath = utils.getFullPath([category, `${id}.mdx`]);
+    const fileContents = utils.getFile(fullPath);
 
-    const { data, content } = matter(fileContents);
+    const { data, content } = utils.getMatter(fileContents);
 
     return {
       data: {
         ...data,
-        createdAt: dayjs(data.createdAt).format('YYYY. MM. DD')
+        createdAt: utils.dateFormatter(data.createdAt, 'YYYY-MM-DD')
       } as FrontMatter,
       content
     };

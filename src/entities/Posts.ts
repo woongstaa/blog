@@ -1,8 +1,3 @@
-import fs from 'fs';
-import path from 'path';
-import dayjs from 'dayjs';
-import matter from 'gray-matter';
-
 import { CategoriesImpl } from './Categories';
 import { FrontMatter, utils } from '@/shared';
 
@@ -25,8 +20,7 @@ export class PostsImpl implements Posts {
 
   public create(paramCategory?: string) {
     const posts = new PostsImpl();
-    const filteredPosts = posts.getFilteredPosts(paramCategory);
-    return filteredPosts;
+    return posts.getFilteredPosts(paramCategory);
   }
 
   private getFilteredPosts(paramCategory?: string): PostFromPosts[] {
@@ -45,20 +39,20 @@ export class PostsImpl implements Posts {
   }
 
   private getPostsByCategory(categoryName: string): PostFromPosts[] {
-    const categoryPath = path.join(utils.mdDirectory, categoryName);
-    const files = fs.readdirSync(categoryPath);
+    const categoryPath = utils.getFullPath(['src', 'shared', 'markdown', categoryName]);
+    const filesFromDirectory = utils.getDirectory(categoryPath);
 
-    return files.map((file) => {
+    return filesFromDirectory.map((file) => {
       const id = file.replace(/\.mdx?$/, '');
-      const fullPath = path.join(categoryPath, file);
-      const fileContents = fs.readFileSync(fullPath, 'utf8');
-      const { data, content } = matter(fileContents);
+      const filePath = utils.getFullPath(['src', 'shared', 'markdown', categoryName, file]);
+      const fileContent = utils.getFile(filePath);
+      const { data, content } = utils.getMatter(fileContent);
 
       return {
         id,
         category: categoryName,
         readingTime: utils.calculateReadingTimeCeil(content),
-        ...({ ...data, createdAt: dayjs(data.createdAt).format('YYYY. MM. DD') } as FrontMatter)
+        ...({ ...data, createdAt: utils.dateFormatter(data.createdAt, 'YYYY-MM-DD') } as FrontMatter)
       };
     });
   }

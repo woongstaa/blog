@@ -1,6 +1,3 @@
-import fs from 'fs';
-import path from 'path';
-
 import { utils } from '@/shared';
 
 export interface Category {
@@ -14,33 +11,37 @@ export interface Categories {
 }
 
 export class CategoriesImpl implements Categories {
-  private readonly mdDirectory: string;
+  private getCategoryDirectories(): string[] {
+    const fullPath = utils.getFullPath(['src', 'shared', 'markdown']);
 
-  constructor() {
-    this.mdDirectory = utils.mdDirectory;
+    return utils.getDirectory(fullPath);
   }
 
-  private getCategoryDirectories(): string[] {
-    return fs.readdirSync(this.mdDirectory, 'utf-8');
+  private addFileCount(categories: string[]) {
+    return categories.map((category) => {
+      const categoryPath = utils.getFullPath(['src', 'shared', 'markdown', category]);
+      const fileCount = utils.getDirectory(categoryPath).length;
+
+      return {
+        name: category,
+        fileCount: fileCount
+      };
+    });
+  }
+
+  private isDirectoryFilter(categories: string[]) {
+    return categories.filter((category) => {
+      const categoryPath = utils.getFullPath(['src', 'shared', 'markdown', category]);
+
+      return utils.isDirectory(categoryPath);
+    });
   }
 
   private getCategoriesWithFileCount(): Category[] {
     const allCategories = this.getCategoryDirectories();
+    const existCategories = this.isDirectoryFilter(allCategories);
 
-    return allCategories
-      .filter((category) => {
-        const categoryPath = path.join(this.mdDirectory, category);
-        return fs.statSync(categoryPath).isDirectory();
-      })
-      .map((category) => {
-        const categoryPath = path.join(this.mdDirectory, category);
-        const fileCount = fs.readdirSync(categoryPath).length;
-
-        return {
-          name: category,
-          fileCount: fileCount
-        };
-      });
+    return this.addFileCount(existCategories);
   }
 
   public getCategoriesWithFileCountOver0(): Category[] {
