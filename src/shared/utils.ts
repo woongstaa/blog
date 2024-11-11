@@ -17,6 +17,7 @@ interface Utils {
 
 export const utils: Utils = {
   getFullPath: (paths) => {
+    console.log('GET_FULL_PATH :::', path.join(process.cwd(), ...paths));
     return path.join(process.cwd(), ...paths);
   },
   getFile: (path) => {
@@ -34,6 +35,7 @@ export const utils: Utils = {
     return fs.statSync(path).isDirectory();
   },
   getDirectory: (path) => {
+    console.log('GET_DIR :::', path, fs.readdirSync(path, 'utf-8'));
     return fs.readdirSync(path, 'utf-8');
   },
   getPortfolio: () => {
