@@ -39,12 +39,12 @@ export class PostsImpl implements Posts {
   }
 
   private getPostsByCategory(categoryName: string): PostFromPosts[] {
-    const categoryPath = utils.getFullPath(['src', 'shared', 'markdown', categoryName]);
+    const categoryPath = utils.getFullPath(`src/shared/markdown/${categoryName}`);
     const filesFromDirectory = utils.getDirectory(categoryPath);
 
     return filesFromDirectory.map((file) => {
       const id = file.replace(/\.mdx?$/, '');
-      const filePath = utils.getFullPath(['src', 'shared', 'markdown', categoryName, file]);
+      const filePath = utils.getFullPath(`src/shared/markdown/${categoryName}/${file}`);
       const fileContent = utils.getFile(filePath);
       const { data, content } = utils.getMatter(fileContent);
 
