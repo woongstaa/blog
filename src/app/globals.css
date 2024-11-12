@@ -103,7 +103,7 @@ code[data-theme*=' '] span {
     }
 
     code {
-      @apply rounded bg-cool-gray px-2 py-1 mx-[2px] text-cool-gray-reverse before:hidden after:hidden;
+      @apply rounded bg-cool-gray px-2 py-1 mx-[2px] text-cool-gray-reverse before:hidden after:hidden text-sm font-pretendard;
     }
 
     blockquote {

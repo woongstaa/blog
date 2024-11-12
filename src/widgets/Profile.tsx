@@ -2,7 +2,7 @@ import { NavigateToHref } from '@/features';
 
 export function Profile() {
   return (
-    <div className='flex w-full flex-col justify-center rounded-lg border border-warm-gray py-8 sm:flex-row'>
+    <div className='flex w-full flex-col justify-center rounded-lg border border-warm-gray px-6 py-8 sm:flex-row'>
       <div className='hidden aspect-square w-48 items-center justify-center overflow-hidden rounded-full bg-warm-gray sm:flex'>
         <img src='/profile.webp' alt='' className='ml-5 w-10/12 object-cover' />
       </div>
@@ -14,9 +14,10 @@ export function Profile() {
       </div>
       <div className='w-4 sm:w-8' />
       <div className='flex flex-col justify-between'>
-        <div className='text-center text-sm sm:text-left mb-4 sm:mb-0'>
+        <div className='mb-4 break-keep px-2 text-center text-sm sm:mb-0 sm:text-left'>
           <p>안녕하세요, 프론트엔드 개발자 이진웅입니다!</p>
-          <p>확장성과 유지보수에 용이한 개발 방법론에 관심이 많습니다.</p>
+          <div className='h-2' />
+          <p>확장성이 뛰어나고 유지보수가 용이한 개발 방법론에 큰 관심을 가지고 있습니다.</p>
         </div>
         <div className='flex justify-center sm:justify-end'>
           <NavigateToHref href='https://github.com/woongstaa' isBlank={true}>
