@@ -50,7 +50,7 @@ export function MDXComponent({ content }: { content?: string }) {
             );
           },
           img: (imageComponent) => {
-            return <img {...imageComponent} className='rounded-lg aspect-video object-contain bg-warm-gray' />;
+            return <img {...imageComponent} className='aspect-video rounded-lg bg-warm-gray object-contain' />;
           }
         }}
       />

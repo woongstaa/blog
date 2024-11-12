@@ -4,9 +4,11 @@ import matter from 'gray-matter';
 import path from 'path';
 import readingTime from 'reading-time';
 
+import { PORTFOLIO_PATH } from './const';
+
 interface Utils {
-  getFullPath: (paths: string) => string;
-  getFile: (path: string) => Promise<string>;
+  getFullPath: (paths?: string) => string;
+  getFile: (path: string) => string;
   getMatter: (fileContent: string) => { data: { [key: string]: string }; content: string };
   dateFormatter: (date: Date | string, format: string) => string;
   isDirectory: (path: string) => boolean;
@@ -17,10 +19,18 @@ interface Utils {
 
 export const utils: Utils = {
   getFullPath: (paths) => {
-    return path.join(process.cwd(), paths);
+    if (!!paths) {
+      return decodeURIComponent(path.join(process.cwd(), paths));
+    } else {
+      return process.cwd();
+    }
   },
-  getFile: async (path) => {
-    return await fs.readFileSync(path, 'utf-8');
+  getFile: (path) => {
+    if (!fs.existsSync(path)) {
+      throw new Error(`Directory not found: ${path}`);
+    } else {
+      return fs.readFileSync(path, 'utf-8');
+    }
   },
   getMatter: (fileContent) => {
     const { data, content } = matter(fileContent);
@@ -35,15 +45,14 @@ export const utils: Utils = {
   },
   getDirectory: (path) => {
     if (!fs.existsSync(path)) {
-      console.error('경로가 존재하지 않음 :::', path);
       throw new Error(`Directory not found: ${path}`);
+    } else {
+      return fs.readdirSync(path, 'utf-8');
     }
-    console.log('GET_DIR :::', path);
-    return fs.readdirSync(path, 'utf-8');
   },
   getPortfolio: async () => {
-    const filePath = utils.getFullPath('src/shared/portfolio/portfolio.md');
-    const file = await utils.getFile(filePath);
+    const filePath = utils.getFullPath(PORTFOLIO_PATH);
+    const file = utils.getFile(filePath);
 
     const { content } = utils.getMatter(file);
 

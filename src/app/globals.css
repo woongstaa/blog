@@ -79,7 +79,7 @@ code[data-theme*=' '] span {
     }
 
     p {
-      @apply my-2;
+      @apply my-4;
     }
 
     strong {

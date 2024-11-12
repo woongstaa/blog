@@ -1,4 +1,4 @@
-import { utils } from '@/shared';
+import { utils, MARKDOWN_PATH } from '@/shared';
 
 export interface Category {
   name: string;
@@ -12,14 +12,14 @@ export interface Categories {
 
 export class CategoriesImpl implements Categories {
   private getCategoryDirectories(): string[] {
-    const fullPath = utils.getFullPath('src/shared/markdown');
+    const fullPath = utils.getFullPath(MARKDOWN_PATH);
 
     return utils.getDirectory(fullPath);
   }
 
   private addFileCount(categories: string[]) {
     return categories.map((category) => {
-      const categoryPath = utils.getFullPath(`src/shared/markdown/${category}`);
+      const categoryPath = utils.getFullPath(`${MARKDOWN_PATH}/${category}`);
       const fileCount = utils.getDirectory(categoryPath).length;
 
       return {
@@ -31,7 +31,7 @@ export class CategoriesImpl implements Categories {
 
   private isDirectoryFilter(categories: string[]) {
     return categories.filter((category) => {
-      const categoryPath = utils.getFullPath(`src/shared/markdown/${category}`);
+      const categoryPath = utils.getFullPath(`${MARKDOWN_PATH}/${category}`);
 
       return utils.isDirectory(categoryPath);
     });

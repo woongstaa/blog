@@ -8,7 +8,6 @@ export function TableOfContents() {
 
   useEffect(() => {
     const headings = window.document.querySelector('article')?.querySelectorAll('h2, h3, h4') as NodeListOf<HTMLElement>;
-
     const extractedHeadings = Array.from(headings).map((heading) => ({ id: heading.id, text: heading.innerText, level: parseInt(heading.tagName.substring(1), 10) }));
 
     setToc(extractedHeadings);
@@ -43,8 +42,8 @@ export function TableOfContents() {
   };
 
   return (
-    <aside className='absolute hidden left-full top-0 h-full w-52 sm:block'>
-      <div className='sticky top-[10vh] ml-8 w-52 rounded-lg bg-cool-gray-reverse p-4'>
+    <aside className='absolute left-full top-0 hidden h-full w-52 sm:block'>
+      <nav className='sticky top-[10vh] ml-8 w-52 rounded-lg bg-cool-gray-reverse p-4'>
         <p className='font-semibold text-warm-gray'>contents.</p>
         <div className='h-2' />
         <ul className='text-sm'>
@@ -64,7 +63,7 @@ export function TableOfContents() {
             );
           })}
         </ul>
-      </div>
+      </nav>
     </aside>
   );
 }

@@ -1,5 +1,5 @@
 import { CategoriesImpl } from './Categories';
-import { FrontMatter, utils } from '@/shared';
+import { FrontMatter, utils, MARKDOWN_PATH } from '@/shared';
 
 export interface PostFromPosts extends FrontMatter {
   id: string;
@@ -20,7 +20,13 @@ export class PostsImpl implements Posts {
 
   public create(paramCategory?: string) {
     const posts = new PostsImpl();
-    return posts.getFilteredPosts(paramCategory);
+    const filteredPosts = posts.getFilteredPosts(paramCategory);
+
+    return this.sortDescByCreatedAt(filteredPosts);
+  }
+
+  private sortDescByCreatedAt(posts: PostFromPosts[]) {
+    return posts.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
   }
 
   private getFilteredPosts(paramCategory?: string): PostFromPosts[] {
@@ -31,7 +37,7 @@ export class PostsImpl implements Posts {
     categories.forEach((category) => {
       if (!paramCategory || category.name === paramCategory) {
         const posts = this.getPostsByCategory(category.name);
-        allPosts = allPosts.concat(posts);
+        allPosts = [...allPosts, ...posts];
       }
     });
 
@@ -39,15 +45,14 @@ export class PostsImpl implements Posts {
   }
 
   private getPostsByCategory(categoryName: string): PostFromPosts[] {
-    const categoryPath = utils.getFullPath(`src/shared/markdown/${categoryName}`);
+    const categoryPath = utils.getFullPath(`${MARKDOWN_PATH}/${categoryName}`);
     const filesFromDirectory = utils.getDirectory(categoryPath);
 
     return filesFromDirectory.map((file) => {
       const id = file.replace(/\.mdx?$/, '');
-      // const filePath = utils.getFullPath(`src/shared/markdown/${categoryName}/${file}`);
-      // const fileContent = utils.getFile(filePath);
-      // const { data, content } = utils.getMatter(fileContent);
-      const { data, content } = utils.getMatter('');
+      const filePath = utils.getFullPath(`${MARKDOWN_PATH}/${categoryName}/${file}`);
+      const fileContent = utils.getFile(filePath);
+      const { data, content } = utils.getMatter(fileContent);
 
       return {
         id,
