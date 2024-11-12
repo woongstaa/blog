@@ -107,10 +107,10 @@ code[data-theme*=' '] span {
     }
 
     blockquote {
-      @apply border-warm-gray py-2;
+      @apply border-warm-gray py-1;
 
       p {
-        @apply text-warm-gray before:hidden after:hidden;
+        @apply my-0 text-warm-gray before:hidden after:hidden;
       }
     }
   }
