@@ -15,28 +15,14 @@ export class PostImpl implements Post {
   content: string;
   readingTime: string;
 
-  constructor() {
-    this.id = '';
-    this.category = '';
-    this.data = { title: '', createdAt: '', description: '', thumbnail: '' };
-    this.content = '';
-    this.readingTime = '';
-  }
-
-  public static create(category: string, id: string) {
-    const post = new PostImpl();
-    post.initialize(category, id);
-    return post;
-  }
-
-  private initialize(category: string, id: string) {
+  constructor(category: string, id: string) {
     const { data, content } = this.getPost(category, id);
 
+    this.id = id;
+    this.category = category;
     this.data = data;
     this.content = content;
     this.readingTime = utils.calculateReadingTimeCeil(content);
-    this.id = id;
-    this.category = decodeURIComponent(category);
   }
 
   private getPost(category: string, id: string) {

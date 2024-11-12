@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default async function Page({ searchParams }: { searchParams: Promise<{ filter?: string }> }) {
   const { filter } = await searchParams;
-  const posts = new PostsImpl().create(filter);
+  const { posts } = new PostsImpl(filter);
 
   return <PostList posts={posts} />;
 }

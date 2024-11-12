@@ -6,7 +6,7 @@ import { PostImpl } from '@/entities';
 export async function generateMetadata({ params }: { params: Promise<{ category: string; id: string }> }): Promise<Metadata> {
   const { category, id } = await params;
 
-  const { data } = PostImpl.create(category, id);
+  const { data } = new PostImpl(category, id);
 
   return {
     title: `${data.title}, jay.log`,

@@ -1,38 +1,29 @@
+import { utils, MARKDOWN_PATH } from '@/shared';
+import { Post, PostImpl } from './Post';
 import { CategoriesImpl } from './Categories';
-import { FrontMatter, utils, MARKDOWN_PATH } from '@/shared';
-
-export interface PostFromPosts extends FrontMatter {
-  id: string;
-  category: string;
-  readingTime: string;
-}
 
 export interface Posts {
-  create: () => PostFromPosts[];
+  posts: Post[];
 }
 
 export class PostsImpl implements Posts {
-  private readonly categoriesImpl: CategoriesImpl;
+  posts: Post[];
 
-  constructor() {
-    this.categoriesImpl = new CategoriesImpl();
+  constructor(filter?: string) {
+    const filteredPosts = this.getFilteredPosts(filter);
+    const sortedFilteredPosts = this.sortDescByCreatedAt(filteredPosts);
+
+    this.posts = sortedFilteredPosts;
   }
 
-  public create(paramCategory?: string) {
-    const posts = new PostsImpl();
-    const filteredPosts = posts.getFilteredPosts(paramCategory);
-
-    return this.sortDescByCreatedAt(filteredPosts);
+  private sortDescByCreatedAt(posts: Post[]) {
+    return posts.sort((a, b) => new Date(b.data.createdAt).getTime() - new Date(a.data.createdAt).getTime());
   }
 
-  private sortDescByCreatedAt(posts: PostFromPosts[]) {
-    return posts.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
-  }
+  private getFilteredPosts(paramCategory?: string): Post[] {
+    const categories = new CategoriesImpl().getCategoriesWithFileCountOver0();
 
-  private getFilteredPosts(paramCategory?: string): PostFromPosts[] {
-    const categories = this.categoriesImpl.getCategoriesWithFileCountOver0();
-
-    let allPosts: PostFromPosts[] = [];
+    let allPosts: Post[] = [];
 
     categories.forEach((category) => {
       if (!paramCategory || category.name === paramCategory) {
@@ -44,21 +35,20 @@ export class PostsImpl implements Posts {
     return allPosts;
   }
 
-  private getPostsByCategory(categoryName: string): PostFromPosts[] {
+  private getPostsByCategory(categoryName: string): Post[] {
     const categoryPath = utils.getFullPath(`${MARKDOWN_PATH}/${categoryName}`);
     const filesFromDirectory = utils.getDirectory(categoryPath);
 
     return filesFromDirectory.map((file) => {
-      const id = file.replace(/\.mdx?$/, '');
-      const filePath = utils.getFullPath(`${MARKDOWN_PATH}/${categoryName}/${file}`);
-      const fileContent = utils.getFile(filePath);
-      const { data, content } = utils.getMatter(fileContent);
+      const idFromCategory = file.replace(/\.mdx?$/, '');
+      const { id, category, readingTime, data, content } = new PostImpl(categoryName, idFromCategory);
 
       return {
         id,
-        category: categoryName,
-        readingTime: utils.calculateReadingTimeCeil(content),
-        ...({ ...data, createdAt: utils.dateFormatter(data.createdAt, 'YYYY-MM-DD') } as FrontMatter)
+        category,
+        readingTime,
+        data,
+        content
       };
     });
   }
