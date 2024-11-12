@@ -21,18 +21,15 @@ export class PostsImpl implements Posts {
   }
 
   private getFilteredPosts(paramCategory?: string): Post[] {
-    const categories = new CategoriesImpl().getCategoriesWithFileCountOver0();
+    const categories = new CategoriesImpl().getNonEmptyCategories();
 
-    let allPosts: Post[] = [];
-
-    categories.forEach((category) => {
-      if (!paramCategory || category.name === paramCategory) {
+    return categories
+      .filter((category) => !paramCategory || category.name === paramCategory)
+      .reduce((allPosts, category) => {
         const posts = this.getPostsByCategory(category.name);
-        allPosts = [...allPosts, ...posts];
-      }
-    });
 
-    return allPosts;
+        return [...allPosts, ...posts];
+      }, [] as Post[]);
   }
 
   private getPostsByCategory(categoryName: string): Post[] {

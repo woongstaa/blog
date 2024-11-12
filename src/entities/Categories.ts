@@ -7,51 +7,41 @@ export interface Category {
 
 export interface Categories {
   getAll: () => Category[];
-  getCategoriesWithFileCountOver0: () => Category[];
+  getNonEmptyCategories: () => Category[];
 }
 
 export class CategoriesImpl implements Categories {
-  private getCategoryDirectories(): string[] {
-    const fullPath = utils.getFullPath(MARKDOWN_PATH);
-
-    return utils.getDirectory(fullPath);
+  private getAllCategories(): string[] {
+    return utils.getDirectory(utils.getFullPath(MARKDOWN_PATH));
   }
 
-  private addFileCount(categories: string[]) {
+  private addFileCount(categories: string[]): Category[] {
     return categories.map((category) => {
       const categoryPath = utils.getFullPath(`${MARKDOWN_PATH}/${category}`);
-      const fileCount = utils.getDirectory(categoryPath).length;
-
       return {
         name: category,
-        fileCount: fileCount
+        fileCount: utils.getDirectory(categoryPath).length
       };
     });
   }
 
-  private isDirectoryFilter(categories: string[]) {
+  private filterValidCategories(categories: string[]): string[] {
     return categories.filter((category) => {
       const categoryPath = utils.getFullPath(`${MARKDOWN_PATH}/${category}`);
-
       return utils.isDirectory(categoryPath);
     });
   }
 
-  private getCategoriesWithFileCount(): Category[] {
-    const allCategories = this.getCategoryDirectories();
-    const existCategories = this.isDirectoryFilter(allCategories);
-
-    return this.addFileCount(existCategories);
-  }
-
-  public getCategoriesWithFileCountOver0(): Category[] {
-    return this.getCategoriesWithFileCount().filter((category) => category.fileCount > 0);
+  public getNonEmptyCategories(): Category[] {
+    const allCategories = this.getAllCategories();
+    const validCategories = this.filterValidCategories(allCategories);
+    return this.addFileCount(validCategories).filter((category) => category.fileCount > 0);
   }
 
   public getAll(): Category[] {
-    const categoriesWithFileCountOver0 = this.getCategoriesWithFileCountOver0();
-    const totalCategoriesFileCount = categoriesWithFileCountOver0.reduce((sum, category) => sum + category.fileCount, 0);
+    const categoriesWithFileCount = this.getNonEmptyCategories();
+    const totalFileCount = categoriesWithFileCount.reduce((sum, category) => sum + category.fileCount, 0);
 
-    return [{ name: '전체', fileCount: totalCategoriesFileCount }, ...categoriesWithFileCountOver0];
+    return [{ name: '전체', fileCount: totalFileCount }, ...categoriesWithFileCount];
   }
 }
