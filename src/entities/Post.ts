@@ -19,14 +19,14 @@ export class PostImpl implements Post {
     const { data, content } = this.getPost(category, id);
 
     this.id = id;
-    this.category = category;
+    this.category = utils.decodeURI(category);
     this.data = data;
     this.content = content;
     this.readingTime = utils.calculateReadingTimeCeil(content);
   }
 
   private getPost(category: string, id: string) {
-    const fullPath = utils.getFullPath(`${MARKDOWN_PATH}/${category}/${id}.mdx`);
+    const fullPath = utils.getFullPath(`${MARKDOWN_PATH}/${category}/${id}.md`);
     const fileContents = utils.getFile(fullPath);
     const { data, content } = utils.getMatter(fileContents);
 
@@ -34,7 +34,7 @@ export class PostImpl implements Post {
       data: {
         ...data,
         createdAt: utils.dateFormatter(data.createdAt, 'YYYY-MM-DD')
-      } as FrontMatter,
+      },
       content
     };
   }

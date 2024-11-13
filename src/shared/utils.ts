@@ -5,22 +5,24 @@ import path from 'path';
 import readingTime from 'reading-time';
 
 import { PORTFOLIO_PATH } from './const';
+import { FrontMatter } from './types';
 
 interface Utils {
   getFullPath: (paths?: string) => string;
   getFile: (path: string) => string;
-  getMatter: (fileContent: string) => { data: { [key: string]: string }; content: string };
+  getMatter: (fileContent: string) => { data: FrontMatter; content: string };
   dateFormatter: (date: Date | string, format: string) => string;
   isDirectory: (path: string) => boolean;
   getDirectory: (path: string) => string[];
-  getPortfolio: () => Promise<{ content: string }>;
+  getPortfolio: () => { content: string };
   calculateReadingTimeCeil: (content: string) => string;
+  decodeURI: (uri: string) => string;
 }
 
 export const utils: Utils = {
   getFullPath: (paths) => {
     if (!!paths) {
-      return decodeURIComponent(path.join(process.cwd(), paths));
+      return utils.decodeURI(path.join(process.cwd(), paths));
     } else {
       return process.cwd();
     }
@@ -35,7 +37,7 @@ export const utils: Utils = {
   getMatter: (fileContent) => {
     const { data, content } = matter(fileContent);
 
-    return { data, content };
+    return { data: data as FrontMatter, content };
   },
   dateFormatter: (date, format) => {
     return dayjs(date).format(format);
@@ -50,7 +52,7 @@ export const utils: Utils = {
       return fs.readdirSync(path, 'utf-8');
     }
   },
-  getPortfolio: async () => {
+  getPortfolio: () => {
     const filePath = utils.getFullPath(PORTFOLIO_PATH);
     const file = utils.getFile(filePath);
 
@@ -62,5 +64,8 @@ export const utils: Utils = {
     const { minutes } = readingTime(content);
 
     return `${Math.ceil(minutes)}분`;
+  },
+  decodeURI: (uri) => {
+    return decodeURIComponent(uri);
   }
 };

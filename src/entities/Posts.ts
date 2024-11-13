@@ -20,11 +20,11 @@ export class PostsImpl implements Posts {
     return posts.sort((a, b) => new Date(b.data.createdAt).getTime() - new Date(a.data.createdAt).getTime());
   }
 
-  private getFilteredPosts(paramCategory?: string): Post[] {
+  private getFilteredPosts(filter?: string): Post[] {
     const categories = new CategoriesImpl().getNonEmptyCategories();
 
     return categories
-      .filter((category) => !paramCategory || category.name === paramCategory)
+      .filter((category) => !filter || category.name === filter)
       .reduce((allPosts, category) => {
         const posts = this.getPostsByCategory(category.name);
 
@@ -37,7 +37,7 @@ export class PostsImpl implements Posts {
     const filesFromDirectory = utils.getDirectory(categoryPath);
 
     return filesFromDirectory.map((file) => {
-      const idFromCategory = file.replace(/\.mdx?$/, '');
+      const idFromCategory = file.replace(/\.md?$/, '');
       const { id, category, readingTime, data, content } = new PostImpl(categoryName, idFromCategory);
 
       return {

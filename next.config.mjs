@@ -6,7 +6,7 @@ const nextConfig = {
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
   // Optionally, add any other Next.js config below
   outputFileTracingIncludes: {
-    '/': ['src/shared/markdown/**/*.mdx']
+    '/': ['src/shared/markdown/**/*.md']
   }
 };
 
