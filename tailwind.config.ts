@@ -9,7 +9,7 @@ const config: Config = {
         'netural-black': '#222223',
         'warm-gray': '#D7D2CB',
         'cool-gray': '#B1B3B3',
-        'cool-gray-reverse': '#4e4c4c'
+        'cool-gray-reverse': '#303030'
       },
       fontFamily: {
         pretendard: ['Pretendard']

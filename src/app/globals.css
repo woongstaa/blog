@@ -8,11 +8,11 @@
 /* rehype-pretty-code css */
 pre {
   overflow-x: auto;
-  padding: 1rem 0;
+  padding: 0;
 }
 
 pre [data-line] {
-  padding: 0 1rem;
+  padding: 0;
 }
 
 code[data-theme*=' '],
@@ -98,7 +98,7 @@ code[data-theme*=' '] span {
     ol,
     li {
       ::marker {
-        @apply text-warm-gray;
+        @apply text-cool-gray;
       }
     }
 
@@ -112,6 +112,10 @@ code[data-theme*=' '] span {
       p {
         @apply my-0 text-warm-gray before:hidden after:hidden;
       }
+    }
+
+    pre {
+      @apply p-2 bg-cool-gray-reverse;
     }
   }
 }
