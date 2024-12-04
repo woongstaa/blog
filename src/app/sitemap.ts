@@ -2,7 +2,7 @@ import { PostsImpl } from '@/entities';
 import type { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const BASE_URL = 'https://jaylog.dev';
+  const BASE_URL = 'https://www.jaylog.dev';
   const { posts } = new PostsImpl();
 
   const staticSitemap: MetadataRoute.Sitemap = [
