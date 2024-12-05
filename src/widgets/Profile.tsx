@@ -25,7 +25,7 @@ export function Profile() {
           </NavigateToHref>
           <div className='w-3' />
           {/* TODO ::: 메일 주소 복사 모달 만들기 */}
-          <a href='mailto:sos@babygo.kr'>
+          <a href='mailto:jinung91@gmail.com'>
             <img src='/gmail.svg' className='w-4 sm:w-6' />
           </a>
           <div className='w-3' />
