@@ -1,7 +1,18 @@
 import { Post } from '@/entities';
 import { NavigateToHref } from '@/features';
 
-export function PostItemCard({ post }: { post: Post }) {
+export function PostItems({ posts }: { posts: Post[] }) {
+  return posts.map((post, index) => {
+    return (
+      <div key={`post_${index}`}>
+        <PostItemCard post={post} />
+        {posts.length - 1 !== index && <div className='h-4' />}
+      </div>
+    );
+  });
+}
+
+function PostItemCard({ post }: { post: Post }) {
   return (
     <NavigateToHref href={`/posts/${post.category}/${post.id}`}>
       <div className='rounded-lg border border-warm-gray p-4'>

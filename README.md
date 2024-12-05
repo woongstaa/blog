@@ -24,19 +24,18 @@
 │   ├── PostList.tsx
 │   └── index.ts
 ├── app
-│   ├── favicon.ico
 │   ├── globals.css
 │   ├── layout.tsx
 │   ├── page.tsx
 │   ├── portfolio
-│   │   ├── page.tsx
-│   │   └── portfolio.md
+│   │   └── page.tsx
 │   ├── posts
 │   │   ├── [category]
 │   │   │   └── [id]
 │   │   │       ├── layout.tsx
 │   │   │       └── page.tsx
 │   │   └── page.tsx
+│   ├── robots.ts
 │   └── sitemap.ts
 ├── entities
 │   ├── Categories.ts
@@ -45,24 +44,32 @@
 │   └── index.ts
 ├── features
 │   ├── NavigateToHref.tsx
-│   ├── PostsCategoryNav.tsx
+│   ├── TableOfContents.tsx
 │   └── index.ts
 ├── shared
+│   ├── MDXComponent.tsx
 │   ├── PageLayout.tsx
+│   ├── const.ts
 │   ├── index.ts
 │   ├── markdown
-│   │   └── study
-│   │       └── zustand.mdx
+│   │   ├── 기록
+│   │   │   ├── 1.md
+│   │   │   ├── 2.md
+│   │   │   ├── 3.md
+│   │   │   └── 4.md
+│   │   └── 회고
+│   │       └── 1.md
+│   ├── portfolio
+│   │   └── portfolio.md
 │   ├── types.ts
 │   └── utils.ts
 └── widgets
     ├── Footer.tsx
     ├── Header.tsx
-    ├── MDXComponent.tsx
-    ├── PostItemCard.tsx
+    ├── PostItems.tsx
     ├── PostSummary.tsx
+    ├── PostsCategoryNav.tsx
     ├── Profile.tsx
     ├── ScrollProgressBar.tsx
-    ├── TableOfContents.tsx
     └── index.ts
 ```

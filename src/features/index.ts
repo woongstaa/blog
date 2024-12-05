@@ -1,2 +1,2 @@
 export { NavigateToHref } from './NavigateToHref';
-export { PostsCategoryNav } from './PostsCategoryNav';
+export { TableOfContents } from './TableOfContents';

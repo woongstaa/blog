@@ -1,5 +1,5 @@
 import { CategoriesImpl } from '@/entities';
-import { NavigateToHref } from './NavigateToHref';
+import { NavigateToHref } from '@/features';
 
 export function PostsCategoryNav() {
   const categories = new CategoriesImpl();
