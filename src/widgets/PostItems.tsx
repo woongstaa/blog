@@ -1,5 +1,6 @@
 import { Post } from '@/entities';
 import { NavigateToHref } from '@/features';
+import { utils } from '@/shared';
 
 export function PostItems({ posts }: { posts: Post[] }) {
   return posts.map((post, index) => {
@@ -25,7 +26,7 @@ function PostItemCard({ post }: { post: Post }) {
           <div className='w-1' />
           <span>{post.readingTime}</span>
           <div className='w-2' />
-          <span>{post.data.createdAt}</span>
+          <span>{utils.dateFormatter(post.data.createdAt, 'YYYY. MM. DD')}</span>
         </div>
       </div>
     </NavigateToHref>

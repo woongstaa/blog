@@ -1,4 +1,5 @@
 import { Post } from '@/entities';
+import { utils } from '@/shared';
 
 export function PostSummary({ category, data, readingTime }: Partial<Post>) {
   return (
@@ -21,7 +22,7 @@ export function PostSummary({ category, data, readingTime }: Partial<Post>) {
         <p>{readingTime}</p>
       </div>
       <div className='h-2' />
-      <p>{data?.createdAt}</p>
+      <p>{data && utils.dateFormatter(data.createdAt, 'YYYY. MM. DD')}</p>
     </div>
   );
 }

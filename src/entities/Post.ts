@@ -31,10 +31,7 @@ export class PostImpl implements Post {
     const { data, content } = utils.getMatter(fileContents);
 
     return {
-      data: {
-        ...data,
-        createdAt: utils.dateFormatter(data.createdAt, 'YYYY-MM-DD')
-      },
+      data,
       content
     };
   }
