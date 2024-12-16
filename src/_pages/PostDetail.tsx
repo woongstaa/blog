@@ -1,5 +1,5 @@
 import { PostImpl } from '@/entities/Post';
-import { TableOfContents } from '@/features';
+// import { TableOfContents } from '@/features';
 import { PageLayout, MDXComponent } from '@/shared';
 import { PostSummary, Profile, ScrollProgressBar } from '@/widgets';
 
@@ -13,7 +13,7 @@ export function PostDetail({ post }: { post: PostImpl }) {
         <div className='h-12' />
         <Profile />
         <div className='h-6' />
-        <TableOfContents />
+        {/* <TableOfContents /> */}
       </div>
     </PageLayout>
   );
