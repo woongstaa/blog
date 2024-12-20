@@ -11,9 +11,14 @@
 - tailwind
 - vercel
 
-### structure
+### details
 
-- [FSD 아키텍처](https://feature-sliced.design/kr/docs/get-started/overview)를 활용하였습니다
+블로그 개발에 대한 설명을 블로그에 기록해놓았습니다.
+
+[Next.js 15 App Router 환경에서 블로그 만들기 (1)](https://www.jaylog.dev/posts/기록/3)
+[Next.js 15 App Router 환경에서 블로그 만들기 (2)](https://www.jaylog.dev/posts/기록/4)
+
+### structure
 
 ```
 .
@@ -53,12 +58,7 @@
 │   ├── index.ts
 │   ├── markdown
 │   │   ├── 기록
-│   │   │   ├── 1.md
-│   │   │   ├── 2.md
-│   │   │   ├── 3.md
-│   │   │   └── 4.md
 │   │   └── 회고
-│   │       └── 1.md
 │   ├── portfolio
 │   │   └── portfolio.md
 │   ├── types.ts
