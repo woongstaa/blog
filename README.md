@@ -22,6 +22,8 @@ MDX 기반 포스팅, 카테고리별 분류, 테이블오브컨텐츠(TOC) 등 
 - Vercel로 CI/CD 구축
 
 ### blog preview & link
+<img width="2007" alt="스크린샷 2024-12-26 오후 5 06 18" src="https://github.com/user-attachments/assets/d2143b94-1f83-4743-b264-98cb22bc8c63" />
+<img width="2011" alt="스크린샷 2024-12-26 오후 5 06 38" src="https://github.com/user-attachments/assets/e9fa9d36-d6ee-4b05-9fd6-a12476b66954" />
 
 [배포링크](https://jaylog.dev)
 
@@ -30,6 +32,7 @@ MDX 기반 포스팅, 카테고리별 분류, 테이블오브컨텐츠(TOC) 등 
 블로그 개발에 대한 설명을 블로그에 기록해놓았습니다.
 
 [Next.js 15 App Router 환경에서 블로그 만들기 (1)](https://www.jaylog.dev/posts/기록/3)
+
 [Next.js 15 App Router 환경에서 블로그 만들기 (2)](https://www.jaylog.dev/posts/기록/4)
 
 ### structure
@@ -90,7 +93,7 @@ MDX 기반 포스팅, 카테고리별 분류, 테이블오브컨텐츠(TOC) 등 
 
 ### roadmap
 
-[ ] 리스트 페이지네이션
-[ ] 댓글 기능
-[ ] 검색 기능
-[ ] 라이트 / 다크 모드 지원
+- [ ] 리스트 페이지네이션
+- [ ] 댓글 기능
+- [ ] 검색 기능
+- [ ] 라이트 / 다크 모드 지원
