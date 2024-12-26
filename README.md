@@ -1,8 +1,8 @@
 ## 개인 개발 블로그 jay.log
 
-### url
-
-[배포링크](https://jaylog.dev)
+jay.log는 **Next.js 15 App Router**와 **TypeScript**를 기반으로 구축한 개인 기술 블로그입니다.  
+MDX 기반 포스팅, 카테고리별 분류, 테이블오브컨텐츠(TOC) 등 **문서 중심** 기능을 구현했으며,  
+**Tailwind CSS**로 반응형 UI를 구성했습니다.
 
 ### tech stack
 
@@ -11,7 +11,21 @@
 - tailwind
 - vercel
 
-### details
+### feature
+
+- MDX 문법으로 글을 작성할 수 있음
+- 테이블 오브 컨텐츠(TableOfContents)로 스크롤 위치에 따라 현재 섹션을 강조
+- 카테고리 분류 및 카테고리 네비게이션
+- Next.js App Router 사용
+- Tailwind로 반응형 UI 구현
+- SEO 최적화 (robots.ts, sitemap.ts 등)
+- Vercel로 CI/CD 구축
+
+### blog preview & link
+
+[배포링크](https://jaylog.dev)
+
+### posts
 
 블로그 개발에 대한 설명을 블로그에 기록해놓았습니다.
 
@@ -22,7 +36,7 @@
 
 ```
 .
-├── _pages
+├── _pages # 실제 페이지 레이어
 │   ├── Home.tsx
 │   ├── Portfolio.tsx
 │   ├── PostDetail.tsx
@@ -73,3 +87,10 @@
     ├── ScrollProgressBar.tsx
     └── index.ts
 ```
+
+### roadmap
+
+[ ] 리스트 페이지네이션
+[ ] 댓글 기능
+[ ] 검색 기능
+[ ] 라이트 / 다크 모드 지원
