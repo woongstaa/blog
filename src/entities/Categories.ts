@@ -1,7 +1,8 @@
 import { utils, MARKDOWN_PATH } from '@/shared';
 
 export interface Category {
-  name: string;
+  value: string;
+  label: string;
   fileCount: number;
 }
 
@@ -9,6 +10,11 @@ export interface Categories {
   getAll: () => Category[];
   getNonEmptyCategories: () => Category[];
 }
+
+const korCategories: Record<string, string> = {
+  retrospective: '회고',
+  log: '기록'
+};
 
 export class CategoriesImpl implements Categories {
   private getAllCategories(): string[] {
@@ -19,7 +25,8 @@ export class CategoriesImpl implements Categories {
     return categories.map((category) => {
       const categoryPath = utils.getFullPath(`${MARKDOWN_PATH}/${category}`);
       return {
-        name: category,
+        value: category,
+        label: CategoriesImpl.getKor(category),
         fileCount: utils.getDirectory(categoryPath).length
       };
     });
@@ -42,6 +49,10 @@ export class CategoriesImpl implements Categories {
     const categoriesWithFileCount = this.getNonEmptyCategories();
     const totalFileCount = categoriesWithFileCount.reduce((sum, category) => sum + category.fileCount, 0);
 
-    return [{ name: '전체', fileCount: totalFileCount }, ...categoriesWithFileCount];
+    return [{ value: 'all', label: '전체', fileCount: totalFileCount }, ...categoriesWithFileCount];
+  }
+
+  static getKor(categoryName: string) {
+    return korCategories[categoryName];
   }
 }

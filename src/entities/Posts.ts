@@ -24,9 +24,9 @@ export class PostsImpl implements Posts {
     const categories = new CategoriesImpl().getNonEmptyCategories();
 
     return categories
-      .filter((category) => !filter || category.name === filter)
+      .filter((category) => !filter || category.value === filter)
       .reduce((allPosts, category) => {
-        const posts = this.getPostsByCategory(category.name);
+        const posts = this.getPostsByCategory(category.value);
 
         return [...allPosts, ...posts];
       }, [] as Post[]);
