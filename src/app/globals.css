@@ -67,6 +67,10 @@ code[data-theme*=' '] span {
       @apply text-warm-gray;
     }
 
+    h3 a {
+      @apply text-warm-gray hover:text-[#f3aa51] decoration-[#f3aa51] underline-offset-4 decoration-2;
+    }
+
     p,
     ul,
     ol,
