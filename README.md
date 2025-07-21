@@ -31,9 +31,9 @@ MDX 기반 포스팅, 카테고리별 분류, 테이블오브컨텐츠(TOC) 등 
 
 블로그 개발에 대한 설명을 블로그에 기록해놓았습니다.
 
-[Next.js 15 App Router 환경에서 블로그 만들기 (1)](https://www.jaylog.dev/posts/기록/3)
+[Next.js 15 App Router 환경에서 블로그 만들기 (1)](https://www.jaylog.dev/posts/log/3)
 
-[Next.js 15 App Router 환경에서 블로그 만들기 (2)](https://www.jaylog.dev/posts/기록/4)
+[Next.js 15 App Router 환경에서 블로그 만들기 (2)](https://www.jaylog.dev/posts/log/4)
 
 ### structure
 
