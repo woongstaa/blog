@@ -10,8 +10,21 @@ export async function generateMetadata({ params }: { params: Promise<{ category:
 
   return {
     title: `${data.title}, jay.log`,
+    description: data.description,
     openGraph: {
-      title: `${data.title}, jay.log`
+      title: `${data.title}, jay.log`,
+      description: data.description,
+      url: `https://www.jaylog.dev/posts/${category}/${id}`,
+      siteName: 'jay.log',
+      type: 'article',
+      locale: 'ko_KR',
+      publishedTime: data.createdAt,
+      authors: ['이진웅']
+    },
+    twitter: {
+      card: 'summary',
+      title: `${data.title}, jay.log`,
+      description: data.description
     }
   };
 }
