@@ -23,10 +23,10 @@ pre code {
   overflow-wrap: break-word;
 }
 
-/* 인라인 코드는 wrapping 유지 */
+/* 인라인 코드는 기본 스타일 유지 */
 :not(pre) > code {
-  white-space: normal;
-  word-wrap: break-word;
+  white-space: nowrap;
+  display: inline;
 }
 
 code[data-theme*=' '],
@@ -124,6 +124,14 @@ code[data-theme*=' '] span {
       @apply rounded bg-cool-gray px-2 py-1 mx-[2px] text-cool-gray-reverse before:hidden after:hidden;
     }
 
+    /* 인라인 코드 스타일 복원 */
+    :not(pre) > code {
+      @apply rounded bg-cool-gray px-2 py-1 mx-[2px] text-cool-gray-reverse before:hidden after:hidden;
+      white-space: normal;
+      word-wrap: break-word;
+      display: inline;
+    }
+
     blockquote {
       @apply border-warm-gray py-1;
 
@@ -134,18 +142,23 @@ code[data-theme*=' '] span {
 
     pre {
       @apply p-2 bg-cool-gray-reverse;
-      
+
       /* 코드 블록 최대 너비 제한 및 wrapping */
       max-width: 100%;
       overflow-x: hidden;
     }
 
+    /* 코드 블록 내부의 코드만 wrapping 적용 */
     pre code {
       white-space: pre-wrap !important;
       word-wrap: break-word;
       word-break: break-all;
       overflow-wrap: break-word;
       display: block;
+      background: transparent !important;
+      padding: 8px !important;
+      margin: 0 !important;
+      border-radius: 0 !important;
     }
   }
 }
