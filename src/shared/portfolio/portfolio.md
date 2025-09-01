@@ -46,7 +46,7 @@ Next.js 기반 SSR 설계와 SEO 최적화로 웹/앱(Webview) 통합 상품 판
 - Lighthouse: SEO 100 / Best Practices 96 / Performance(데스크탑) 90
 - 메타/OG 태그 동적 삽입 자동화로 검색 노출 최적화
 - 반응형 대응과 컴포넌트 기반 설계로 채널 간 UX 일관성 확보
-- 프론트엔드 2인 중 SSR·SEO 최적화 약 80% 주도
+- 프론트엔드 2인 중 약 80% 구현 주도
 
 ### [애기야가자](https://apps.apple.com/kr/app/%EC%95%A0%EA%B8%B0%EC%95%BC%EA%B0%80%EC%9E%90-%ED%82%A4%EC%A6%88-%EC%97%AC%ED%96%89-%EB%86%80%EC%9D%B4-%ED%95%AB%ED%94%8C-%EC%A0%95%EB%B3%B4-%EC%9C%A1%EC%95%84%EC%95%B1/id1479205228) - v2.0 업데이트 및 리팩토링
 
