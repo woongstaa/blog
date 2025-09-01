@@ -15,6 +15,20 @@ pre [data-line] {
   padding: 0;
 }
 
+/* 코드 블록 wrapping 설정 */
+pre code {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  word-break: break-all;
+  overflow-wrap: break-word;
+}
+
+/* 인라인 코드는 wrapping 유지 */
+:not(pre) > code {
+  white-space: normal;
+  word-wrap: break-word;
+}
+
 code[data-theme*=' '],
 code[data-theme*=' '] span {
   color: var(--shiki-light);
@@ -120,6 +134,18 @@ code[data-theme*=' '] span {
 
     pre {
       @apply p-2 bg-cool-gray-reverse;
+      
+      /* 코드 블록 최대 너비 제한 및 wrapping */
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    pre code {
+      white-space: pre-wrap !important;
+      word-wrap: break-word;
+      word-break: break-all;
+      overflow-wrap: break-word;
+      display: block;
     }
   }
 }

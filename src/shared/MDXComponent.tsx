@@ -21,7 +21,8 @@ export function MDXComponent({ content }: { content?: string }) {
                 rehypePrettyCode,
                 {
                   keepBackground: false,
-                  theme: { dark: 'plastic', light: 'github-light' }
+                  theme: { dark: 'plastic', light: 'github-light' },
+                  defaultLang: 'plaintext'
                   // transformers: [
                   //   transformerCopyButton({
                   //     visibility: 'always',
