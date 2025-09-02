@@ -1,4 +1,4 @@
-import { HeroSection, ProjectShowcase, CareerTimeline, TechStack, ContactSection } from '@/widgets';
+import { HeroSection, ProjectShowcase, CareerTimeline, TechStack } from '@/widgets';
 
 export function Home() {
   return (
@@ -7,7 +7,6 @@ export function Home() {
       <ProjectShowcase />
       <CareerTimeline />
       <TechStack />
-      <ContactSection />
     </div>
   );
 }

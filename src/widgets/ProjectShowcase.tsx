@@ -13,7 +13,7 @@ function ProjectCard({ project }: { project: Project }) {
           </p>
         </div>
 
-        <p className='mb-4 text-cool-gray'>{project.description}</p>
+        <p className='mb-4 whitespace-pre-wrap text-cool-gray'>{project.description}</p>
 
         {project.metrics && (
           <div className='mb-4 grid h-32 grid-cols-2 gap-3'>

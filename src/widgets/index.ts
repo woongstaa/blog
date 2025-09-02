@@ -9,6 +9,5 @@ export { HeroSection } from './HeroSection';
 export { ProjectShowcase } from './ProjectShowcase';
 export { CareerTimeline } from './CareerTimeline';
 export { TechStack } from './TechStack';
-export { ContactSection } from './ContactSection';
 export { Modal } from './Modal';
 export { ProjectDetail } from './ProjectDetail';

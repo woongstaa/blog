@@ -5,7 +5,7 @@ export function CareerTimeline() {
       role: '프론트엔드 개발자',
       period: '2025.06 - 2025.08 (3개월)',
       description: '선결제 할인 플랫폼',
-      highlights: ['단골머니 2.0 서비스 오픈', 'React Native 지갑 시스템', '결제 플로우 안정화']
+      highlights: ['단골머니 2.0 서비스 오픈', '결제 플로우 안정화']
     },
     {
       company: '애기야가자',

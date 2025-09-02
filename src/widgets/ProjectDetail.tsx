@@ -22,7 +22,7 @@ export function ProjectDetail({ projectId }: ProjectDetailProps) {
       </div>
 
       <div className='mb-8'>
-        <p className='text-cool-gray'>{project.detailedDescription || project.description}</p>
+        <p className='whitespace-pre-wrap text-cool-gray'>{project.detailedDescription || project.description}</p>
       </div>
 
       {project.metrics && (
@@ -38,18 +38,6 @@ export function ProjectDetail({ projectId }: ProjectDetailProps) {
           </div>
         </div>
       )}
-
-      <div className='mb-8'>
-        <h2 className='mb-4 text-xl font-bold text-warm-gray'>주요 성과</h2>
-        <ul className='space-y-2'>
-          {project.achievements.map((achievement, index) => (
-            <li key={index} className='flex items-start text-cool-gray'>
-              <span className='mr-3 mt-2 size-2 shrink-0 rounded-full bg-[#f3aa51]'></span>
-              <span>{achievement}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
 
       {project.challenges && (
         <div className='mb-8'>
