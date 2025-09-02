@@ -25,9 +25,11 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
-  children
+  children,
+  project
 }: Readonly<{
   children: React.ReactNode;
+  project: React.ReactNode;
 }>) {
   return (
     <html lang='ko'>
@@ -37,6 +39,7 @@ export default function RootLayout({
       <body>
         <Header />
         {children}
+        {project}
         <Footer />
       </body>
     </html>

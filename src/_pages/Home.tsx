@@ -1,10 +1,13 @@
-import { PageLayout } from '@/shared';
-import { Profile } from '@/widgets';
+import { HeroSection, ProjectShowcase, CareerTimeline, TechStack, ContactSection } from '@/widgets';
 
 export function Home() {
   return (
-    <PageLayout className=''>
-      <Profile />
-    </PageLayout>
+    <div className='min-h-screen'>
+      <HeroSection />
+      <ProjectShowcase />
+      <CareerTimeline />
+      <TechStack />
+      <ContactSection />
+    </div>
   );
 }

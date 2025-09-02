@@ -10,10 +10,6 @@ export function Header() {
         <NavigateToHref href='/posts'>
           <h4 className='text-lg font-semibold'>posts.</h4>
         </NavigateToHref>
-        <div className='w-4' />
-        <NavigateToHref href='/portfolio'>
-          <h4 className='text-lg font-semibold'>portfolio.</h4>
-        </NavigateToHref>
       </div>
     </header>
   );
