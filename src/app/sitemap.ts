@@ -1,9 +1,9 @@
-import { PostsImpl } from '@/entities';
+import { posts } from '@/entities';
 import type { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const BASE_URL = 'https://www.jaylog.dev';
-  const { posts } = new PostsImpl();
+  const postList = posts.getAll();
 
   const staticSitemap: MetadataRoute.Sitemap = [
     {
@@ -26,8 +26,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   ];
 
-  const postsSitemap: MetadataRoute.Sitemap = posts.map((post) => ({
-    url: `${BASE_URL}/posts/${post.category}/${post.id}`,
+  const postsSitemap: MetadataRoute.Sitemap = postList.map((p) => ({
+    url: `${BASE_URL}/posts/${p.category}/${p.id}`,
     lastModified: new Date(),
     changeFrequency: 'daily',
     priority: 1

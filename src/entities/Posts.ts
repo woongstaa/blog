@@ -1,52 +1,33 @@
 import { utils, MARKDOWN_PATH } from '@/shared';
-import { Post, PostImpl } from './Post';
-import { CategoriesImpl } from './Categories';
+import { Post, post } from './Post';
+import { categories } from './Categories';
 
-export interface Posts {
-  posts: Post[];
+function sortDescByCreatedAt(postList: Post[]): Post[] {
+  return postList.sort(
+    (a, b) => new Date(b.data.createdAt).getTime() - new Date(a.data.createdAt).getTime()
+  );
 }
 
-export class PostsImpl implements Posts {
-  posts: Post[];
+function getPostsByCategory(categoryName: string): Post[] {
+  const categoryPath = utils.getFullPath(`${MARKDOWN_PATH}/${categoryName}`);
+  const filesFromDirectory = utils.getDirectory(categoryPath);
 
-  constructor(filter?: string) {
-    const filteredPosts = this.getFilteredPosts(filter);
-    const sortedFilteredPosts = this.sortDescByCreatedAt(filteredPosts);
+  return filesFromDirectory.map((file) => {
+    const id = file.replace(/\.md?$/, '');
+    return post.get(categoryName, id);
+  });
+}
 
-    this.posts = sortedFilteredPosts;
-  }
+export const posts = {
+  getAll: (filter?: string): Post[] => {
+    const categoryList = categories.getNonEmpty();
 
-  private sortDescByCreatedAt(posts: Post[]) {
-    return posts.sort((a, b) => new Date(b.data.createdAt).getTime() - new Date(a.data.createdAt).getTime());
-  }
-
-  private getFilteredPosts(filter?: string): Post[] {
-    const categories = new CategoriesImpl().getNonEmptyCategories();
-
-    return categories
+    const filtered = categoryList
       .filter((category) => !filter || category.value === filter)
       .reduce((allPosts, category) => {
-        const posts = this.getPostsByCategory(category.value);
-
-        return [...allPosts, ...posts];
+        return [...allPosts, ...getPostsByCategory(category.value)];
       }, [] as Post[]);
-  }
 
-  private getPostsByCategory(categoryName: string): Post[] {
-    const categoryPath = utils.getFullPath(`${MARKDOWN_PATH}/${categoryName}`);
-    const filesFromDirectory = utils.getDirectory(categoryPath);
-
-    return filesFromDirectory.map((file) => {
-      const idFromCategory = file.replace(/\.md?$/, '');
-      const { id, category, readingTime, data, content } = new PostImpl(categoryName, idFromCategory);
-
-      return {
-        id,
-        category,
-        readingTime,
-        data,
-        content
-      };
-    });
-  }
-}
+    return sortDescByCreatedAt(filtered);
+  },
+};

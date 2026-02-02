@@ -1,5 +1,5 @@
 import { PostList } from '@/_pages';
-import { PostsImpl } from '@/entities';
+import { posts } from '@/entities';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
 
 export default async function Page({ searchParams }: { searchParams: Promise<{ filter?: string }> }) {
   const { filter } = await searchParams;
-  const { posts } = new PostsImpl(filter);
+  const postList = posts.getAll(filter);
 
-  return <PostList posts={posts} />;
+  return <PostList posts={postList} />;
 }

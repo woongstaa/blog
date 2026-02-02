@@ -1,12 +1,12 @@
-import { CategoriesImpl } from '@/entities';
+import { categories } from '@/entities';
 import { NavigateToHref } from '@/features';
 
 export function PostsCategoryNav() {
-  const categories = new CategoriesImpl();
+  const categoryList = categories.getAll();
 
   return (
     <ul className='flex flex-wrap'>
-      {categories.getAll().map((category, index) => {
+      {categoryList.map((category, index) => {
         if (category.label === '전체') {
           return (
             <NavigateToHref key={`category_${index}`} href='/posts'>

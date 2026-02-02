@@ -1,7 +1,7 @@
-export { CategoriesImpl } from './Categories';
-export { PostImpl } from './Post';
-export { PostsImpl } from './Posts';
+export { categories } from './Categories';
+export { post } from './Post';
+export { posts } from './Posts';
 
-export type { Category, Categories } from './Categories';
+export type { Category } from './Categories';
 export type { Post } from './Post';
-export type { Project, Career } from './Project';
+export type { Career, Project } from './Project';

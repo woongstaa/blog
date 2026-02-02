@@ -8,31 +8,18 @@ export interface Post {
   readingTime: string;
 }
 
-export class PostImpl implements Post {
-  id: string;
-  category: string;
-  data: FrontMatter;
-  content: string;
-  readingTime: string;
-
-  constructor(category: string, id: string) {
-    const { data, content } = this.getPost(category, id);
-
-    this.id = id;
-    this.category = utils.decodeURI(category);
-    this.data = data;
-    this.content = content;
-    this.readingTime = utils.calculateReadingTimeCeil(content);
-  }
-
-  private getPost(category: string, id: string) {
+export const post = {
+  get: (category: string, id: string): Post => {
     const fullPath = utils.getFullPath(`${MARKDOWN_PATH}/${category}/${id}.md`);
     const fileContents = utils.getFile(fullPath);
     const { data, content } = utils.getMatter(fileContents);
 
     return {
+      id,
+      category: utils.decodeURI(category),
       data,
-      content
+      content,
+      readingTime: utils.calculateReadingTimeCeil(content),
     };
-  }
-}
+  },
+};

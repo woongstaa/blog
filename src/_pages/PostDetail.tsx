@@ -1,9 +1,9 @@
-import { PostImpl } from '@/entities/Post';
+import { Post } from '@/entities';
 import { TableOfContents } from '@/features';
 import { PageLayout, MDXComponent } from '@/shared';
 import { PostSummary, Profile, ScrollProgressBar } from '@/widgets';
 
-export function PostDetail({ post }: { post: PostImpl }) {
+export function PostDetail({ post }: { post: Post }) {
   return (
     <PageLayout>
       <ScrollProgressBar />

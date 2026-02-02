@@ -1,4 +1,4 @@
-import { CategoriesImpl, Post } from '@/entities';
+import { categories, Post } from '@/entities';
 import { utils } from '@/shared';
 
 export function PostSummary({ category, data, readingTime }: Partial<Post>) {
@@ -10,7 +10,7 @@ export function PostSummary({ category, data, readingTime }: Partial<Post>) {
           <div className='h-8' />
         </>
       )}
-      <p className='rounded-lg bg-cool-gray px-2 py-1 font-bold text-[#333]'>{category && CategoriesImpl.getKor(category)}</p>
+      <p className='rounded-lg bg-cool-gray px-2 py-1 font-bold text-[#333]'>{category && categories.getLabel(category)}</p>
       <div className='h-2' />
       <p className='text-[2.5em] font-bold text-warm-gray'>{data?.title}</p>
       <div className='h-2' />
