@@ -1,4 +1,4 @@
-import { posts } from '@/entities';
+import { posts } from '@/entities/post';
 import type { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {

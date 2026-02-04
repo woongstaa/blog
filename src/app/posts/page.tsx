@@ -1,5 +1,5 @@
 import { PostList } from '@/_pages';
-import { posts } from '@/entities';
+import { posts } from '@/entities/post';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {

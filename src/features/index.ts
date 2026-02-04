@@ -1,2 +1,2 @@
-export { NavigateToHref } from './NavigateToHref';
-export { TableOfContents } from './TableOfContents';
+export { NavigateToHref } from './navigation';
+export { TableOfContents } from './table-of-contents';

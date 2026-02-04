@@ -1,10 +1,4 @@
-export { Home } from './Home';
-export { Portfolio } from './Portfolio';
-export { PostList } from './PostList';
-export { PostDetail } from './PostDetail';
-export {} from '';
-export {} from '';
-export {} from '';
-export {} from '';
-export {} from '';
-export {} from '';
+export { Home } from './home';
+export { Portfolio } from './portfolio';
+export { PostList } from './post-list';
+export { PostDetail } from './post-detail';

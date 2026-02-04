@@ -1,7 +1,7 @@
 import React from 'react';
 import { Metadata } from 'next';
 
-import { post } from '@/entities';
+import { post } from '@/entities/post';
 
 export async function generateMetadata({ params }: { params: Promise<{ category: string; id: string }> }): Promise<Metadata> {
   const { category, id } = await params;

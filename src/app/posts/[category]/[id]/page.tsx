@@ -1,6 +1,6 @@
 import { PostDetail } from '@/_pages';
-import { post } from '@/entities';
-import { BlogPostingJsonLD } from '@/shared/JsonLD';
+import { post } from '@/entities/post';
+import { BlogPostingJsonLD } from '@/shared';
 
 export default async function Page({ params }: { params: Promise<{ category: string; id: string }> }) {
   const { category, id } = await params;

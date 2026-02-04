@@ -1,7 +1,7 @@
-export { categories } from './Categories';
-export { post } from './Post';
-export { posts } from './Posts';
+export { categories } from './category';
+export { post, posts } from './post';
+export { PROJECTS, TECH_STACKS } from './project';
 
-export type { Category } from './Categories';
-export type { Post } from './Post';
-export type { Career, Project } from './Project';
+export type { Category } from './category';
+export type { Post } from './post';
+export type { Career, Project } from './project';

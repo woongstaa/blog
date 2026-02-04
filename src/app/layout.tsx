@@ -1,7 +1,7 @@
 import './globals.css';
 import { Metadata } from 'next';
 import { Header, Footer } from '@/widgets';
-import { WebSiteJsonLD } from '@/shared/JsonLD';
+import { WebSiteJsonLD } from '@/shared';
 
 export const metadata: Metadata = {
   title: 'jay.log',

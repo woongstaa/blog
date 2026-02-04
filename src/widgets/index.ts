@@ -1,13 +1,3 @@
-export { Header } from './Header';
-export { PostSummary } from './PostSummary';
-export { ScrollProgressBar } from './ScrollProgressBar';
-export { Footer } from './Footer';
-export { Profile } from './Profile';
-export { PostItems } from './PostItems';
-export { PostsCategoryNav } from './PostsCategoryNav';
-export { HeroSection } from './HeroSection';
-export { ProjectShowcase } from './ProjectShowcase';
-export { CareerTimeline } from './CareerTimeline';
-export { TechStack } from './TechStack';
-export { Modal } from './Modal';
-export { ProjectDetail } from './ProjectDetail';
+export { Header, Footer } from './layout';
+export { ScrollProgressBar, Modal } from './common';
+export { ProjectDetail } from './project';
