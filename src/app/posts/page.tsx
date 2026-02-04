@@ -28,9 +28,26 @@ export const metadata: Metadata = {
   }
 };
 
-export default async function Page({ searchParams }: { searchParams: Promise<{ filter?: string }> }) {
-  const { filter } = await searchParams;
-  const postList = posts.getAll(filter);
+interface PageProps {
+  searchParams: Promise<{
+    category?: string;
+    page?: string;
+    q?: string;
+  }>;
+}
 
-  return <PostList posts={postList} />;
+export default async function Page({ searchParams }: PageProps) {
+  const { category, page, q } = await searchParams;
+  const currentPage = Math.max(1, parseInt(page || '1', 10) || 1);
+
+  const { posts: paginatedPosts, pagination } = posts.getPaginated(category, currentPage, q);
+
+  return (
+    <PostList
+      posts={paginatedPosts}
+      pagination={pagination}
+      category={category}
+      query={q}
+    />
+  );
 }

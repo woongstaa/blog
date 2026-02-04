@@ -15,7 +15,7 @@ export function PostsCategoryNav() {
           );
         } else {
           return (
-            <NavigateToHref key={`category_${index}`} href={`/posts?filter=${category.value}`}>
+            <NavigateToHref key={`category_${index}`} href={`/posts?category=${category.value}`}>
               <SingleCategory category={category} />
             </NavigateToHref>
           );
