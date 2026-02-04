@@ -20,10 +20,11 @@ export function PostList({ posts, pagination, category, query }: PostListProps) 
 
   return (
     <PageLayout>
-      <PostsCategoryNav />
-      <div className="my-4">
+      <div className="mb-4">
         <SearchInput category={category} />
       </div>
+      <PostsCategoryNav />
+      <br />
       <PostItems posts={posts} />
       <Pagination
         currentPage={pagination.currentPage}

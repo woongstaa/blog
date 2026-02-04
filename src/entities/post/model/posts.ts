@@ -20,8 +20,8 @@ function searchPosts(postList: Post[], query: string): Post[] {
   if (!q) return postList;
 
   return postList.filter((p) => {
-    const title = p.data.title.toLowerCase();
-    const description = p.data.description.toLowerCase();
+    const title = p.data?.title?.toLowerCase() ?? '';
+    const description = p.data?.description?.toLowerCase() ?? '';
     return title.includes(q) || description.includes(q);
   });
 }
