@@ -6,7 +6,8 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        'netural-black': '#222223',
+        'neutral-black': '#222223',
+        accent: '#f3aa51',
         'warm-gray': '#D7D2CB',
         'cool-gray': '#B1B3B3',
         'cool-gray-reverse': '#303030'

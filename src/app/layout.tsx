@@ -5,7 +5,7 @@ import { WebSiteJsonLD } from '@/shared';
 
 export const metadata: Metadata = {
   title: 'jay.log',
-  description: '프론트엔드 개발자 이진웅의 기술 블로그. React, Next.js, TypeScript 등 웹 개발 경험과 인사이트를 공유합니다.',
+  description: '프론트엔드 개발자 이진웅의 기술 블로그. React Native, Next.js, TypeScript 등 앱·웹 개발 경험과 인사이트를 공유합니다.',
   verification: {
     google: 'Fovph-FksBSnhVVH01lO442APXMSp6jENyMGEPmPbYw'
   },

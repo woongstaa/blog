@@ -1,9 +1,8 @@
 import { Post } from '@/entities/post';
 import { TableOfContents } from '@/features';
 import { PageLayout, MDXComponent } from '@/shared';
-import { ScrollProgressBar } from '@/widgets';
+import { ScrollProgressBar, Profile } from '@/widgets';
 import { PostSummary } from './PostSummary';
-import { Profile } from './Profile';
 
 export function PostDetail({ post }: { post: Post }) {
   return (

@@ -5,4 +5,4 @@ export { BlogPostingJsonLD, WebSiteJsonLD } from './ui/JsonLD';
 
 export type { FrontMatter } from './model/types';
 
-export { MARKDOWN_PATH, PORTFOLIO_PATH } from './config/const';
+export { MARKDOWN_PATH } from './config/const';

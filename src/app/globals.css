@@ -45,7 +45,7 @@ code[data-theme*=' '] span {
 
 @layer base {
   body {
-    @apply font-pretendard tracking-tight bg-netural-black;
+    @apply bg-neutral-black font-pretendard tracking-tight;
   }
 }
 
@@ -82,7 +82,7 @@ code[data-theme*=' '] span {
     }
 
     h3 a {
-      @apply text-warm-gray hover:text-[#f3aa51] decoration-[#f3aa51] underline-offset-4 decoration-2;
+      @apply text-warm-gray decoration-accent decoration-2 underline-offset-4 hover:text-accent;
     }
 
     p,
@@ -105,11 +105,11 @@ code[data-theme*=' '] span {
     }
 
     a {
-      @apply text-[#f3aa51] underline-offset-4 decoration-2;
+      @apply text-accent decoration-2 underline-offset-4;
     }
 
     a strong {
-      @apply hover:text-[#f3aa51];
+      @apply hover:text-accent;
     }
 
     ul,
@@ -121,12 +121,12 @@ code[data-theme*=' '] span {
     }
 
     code {
-      @apply rounded bg-cool-gray px-2 py-1 mx-[2px] text-cool-gray-reverse before:hidden after:hidden;
+      @apply mx-[2px] rounded bg-cool-gray px-2 py-1 text-cool-gray-reverse before:hidden after:hidden;
     }
 
     /* 인라인 코드 스타일 복원 */
     :not(pre) > code {
-      @apply rounded bg-cool-gray px-2 py-1 mx-[2px] text-cool-gray-reverse before:hidden after:hidden;
+      @apply mx-[2px] rounded bg-cool-gray px-2 py-1 text-cool-gray-reverse before:hidden after:hidden;
       white-space: normal;
       word-wrap: break-word;
       display: inline;
@@ -141,7 +141,7 @@ code[data-theme*=' '] span {
     }
 
     pre {
-      @apply p-2 bg-cool-gray-reverse;
+      @apply bg-cool-gray-reverse p-2;
 
       /* 코드 블록 최대 너비 제한 및 wrapping */
       max-width: 100%;

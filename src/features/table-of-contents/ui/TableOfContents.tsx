@@ -51,12 +51,12 @@ export function TableOfContents() {
             return (
               <li
                 key={`toc_${index}`}
-                className={`cursor-pointer`}
+                className={content.id === activeId ? 'cursor-pointer text-accent' : 'cursor-pointer'}
                 onClick={(e) => {
                   e.preventDefault(); // 기본 해시 이동 동작 방지
                   handleScroll(content.id);
                 }}
-                style={{ marginLeft: `${(content.level - 2) * 8}px`, color: content.id === activeId ? '#f3aa51' : '', marginBottom: toc.length - 1 !== index ? '4px' : '' }}
+                style={{ marginLeft: `${(content.level - 2) * 8}px`, marginBottom: toc.length - 1 !== index ? '4px' : '' }}
               >
                 {content.text}
               </li>

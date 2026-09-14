@@ -1,13 +1,17 @@
 import { ScrollProgressBar } from '@/widgets';
-import { utils, PageLayout, MDXComponent } from '@/shared';
+import { HeroSection } from './HeroSection';
+import { ProjectShowcase } from './ProjectShowcase';
+import { CareerTimeline } from './CareerTimeline';
+import { TechStack } from './TechStack';
 
-export async function Portfolio() {
-  const { content } = utils.getPortfolio();
-
+export function Portfolio() {
   return (
-    <PageLayout>
+    <div className='min-h-screen'>
       <ScrollProgressBar />
-      <MDXComponent content={content} />
-    </PageLayout>
+      <HeroSection />
+      <ProjectShowcase />
+      <CareerTimeline />
+      <TechStack />
+    </div>
   );
 }

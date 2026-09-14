@@ -4,7 +4,6 @@ import matter from 'gray-matter';
 import path from 'path';
 import readingTime from 'reading-time';
 
-import { PORTFOLIO_PATH } from '../config/const';
 import { FrontMatter } from '../model/types';
 
 // 캐시 타입 정의
@@ -64,7 +63,6 @@ interface Utils {
   dateFormatter: (date: Date | string, format: string) => string;
   isDirectory: (path: string) => boolean;
   getDirectory: (path: string) => string[];
-  getPortfolio: () => { content: string };
   calculateReadingTimeCeil: (content: string) => string;
   decodeURI: (uri: string) => string;
   // 캐시 관리 메서드
@@ -159,14 +157,6 @@ export const utils: Utils = {
       console.error(`Error reading directory: ${dirPath}`, error);
       throw error;
     }
-  },
-  getPortfolio: () => {
-    const filePath = utils.getFullPath(PORTFOLIO_PATH);
-    const file = utils.getFile(filePath);
-
-    const { content } = utils.getMatter(file);
-
-    return { content };
   },
   calculateReadingTimeCeil: (content) => {
     const { minutes } = readingTime(content);
