@@ -14,7 +14,7 @@ export function Modal({ children }: ModalProps) {
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
-        closeModal();
+        router.back();
       }
     };
 
@@ -25,7 +25,6 @@ export function Modal({ children }: ModalProps) {
       document.removeEventListener('keydown', handleEscape);
       document.body.style.overflow = 'unset';
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router]);
 
   const handleBackdropClick = (e: React.MouseEvent) => {
